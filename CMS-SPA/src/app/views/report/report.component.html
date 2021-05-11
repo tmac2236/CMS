@@ -18,14 +18,14 @@
                       name="licenseNumber"
                       [(ngModel)]="scarManageRecordDto.licenseNumber"
                     />
-                    <label class="col-form-label mr-1">{{ 'Report.titleList.signInDate' | translate }}</label>
+                    <label class="col-form-label mr-1">{{ 'Report.titleList.signInDate' | translate }} Start</label>
                     <input
                       class="col-form-label mr-1"
                       type="date"
                       name="signInDateS"
                       [(ngModel)]="scarManageRecordDto.signInDateS"
                     />
-                    <label class="col-form-label mr-1">{{ 'Report.titleList.signOutDate' | translate }}</label>
+                    <label class="col-form-label mr-1">{{ 'Report.titleList.signInDate' | translate }} End</label>
                     <input
                       class="col-form-label mr-1"
                       type="date"
@@ -69,6 +69,7 @@
                           <th style="width:5%; background-color:#76DAFF;" >{{ 'Report.titleList.signInDate' | translate }}</th>
                           
                           <th style="width:5%; background-color:#76DAFF;" >{{ 'Report.titleList.tempNumber' | translate }}</th>
+                          <th style="width:5%; background-color:#76DAFF;" >{{ 'Report.titleList.carTempNumber' | translate }}</th>
                           <th style="width:5%; background-color:#76DAFF;" >{{ 'Report.titleList.signInReason' | translate }}</th>
                           <th style="width:5%; background-color:#76DAFF;" >{{ 'Report.titleList.goodsName' | translate }}</th>
                           <th style="width:5%; background-color:#76DAFF;" >{{ 'Report.titleList.goodsCount' | translate }}</th>
@@ -95,6 +96,7 @@
                             <td>{{ item.signInDate | date: "yyyy/MM/dd HH:mm:ss"}}</td>
 
                             <td>{{ item.tempNumber }}</td>
+                            <td>{{ item.carTempNumber }}</td>
                             <td>{{ item.signInReason }}</td>
                             <td>{{ item.goodsName }}</td>
                             <td>{{ item.goodsCount }}</td>

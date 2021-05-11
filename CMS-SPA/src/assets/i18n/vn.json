@@ -30,6 +30,7 @@
 
             "signInDate":"Ngày / Giờ vào xưởng",
             "tempNumber":"Mã số thẻ khách",
+            "carTempNumber" :"Mã số thẻ xe",
             "signInReason":"Lý do",
             "goodsName":"Tên hàng",
             "goodsCount":"Số lượng",
@@ -41,8 +42,9 @@
             "signOutDate":"Ngày / Giờ rời xưởng",
 
             "guardName":"Bảo vệ ký tên",
-            "cardId":"Qui cách xe",
+            "carSize":"Qui cách xe",
             "companyDistance":"khoảng cách"
+
         }
     }
 }

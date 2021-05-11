@@ -8,6 +8,7 @@ export class CarManageRecord extends Pagination {
   signInDate: Date;
 
   tempNumber: string;
+  carTempNumber: string;
   signInReason: string;
   goodsName: string;
   goodsCount: string;

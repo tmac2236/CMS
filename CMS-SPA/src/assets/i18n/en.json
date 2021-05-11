@@ -28,8 +28,9 @@
                 "driverName":"Driver Name",
                 "licenseNumber":"License Number",
 
-                "signInDate":"SignIn Date",
+                "signInDate":"Sign In Date",
                 "tempNumber":"Temp Number",
+                "carTempNumber":"Car Temp Number",
                 "signInReason":"SignIn Reason",
                 "goodsName":"Goods Name",
                 "goodsCount":"Goods Count",
@@ -41,8 +42,9 @@
                 "signOutDate":"SignOut Date",
     
                 "guardName":"Guard Name",
-                "cardId":"Car Size",
+                "carSize":"Car Size",
                 "companyDistance":"Distance"
+
         }
     }
 }

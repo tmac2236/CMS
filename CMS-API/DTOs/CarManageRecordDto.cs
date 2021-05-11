@@ -13,6 +13,7 @@ namespace CMS_API.DTOs
 
 
         public string TempNumber { get; set; }
+        public string CarTempNumber { get; set; }
         public string SignInReason { get; set; }
         public string GoodsName { get; set; }
         public string GoodsCount { get; set; }

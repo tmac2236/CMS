@@ -45,6 +45,7 @@ namespace API.Data.Repository.CMS
                                                   ,SignInDate		  AS	SignInDate
                                             
                                                   ,TempNumber		  AS	TempNumber
+                                                  ,CarTempNumber      AS	CarTempNumber
                                                   ,SignInReason		  AS	SignInReason
                                                   ,GoodsName		  AS	GoodsName
                                                   ,GoodsCount		  AS	GoodsCount

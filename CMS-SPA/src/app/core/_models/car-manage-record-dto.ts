@@ -8,6 +8,7 @@ export class CarManageRecordDto implements ModelInterface {
   signInDate: Date;
 
   tempNumber: string;
+  carTempNumber: string;
   signInReason: string;
   goodsName: string;
   goodsCount: string;

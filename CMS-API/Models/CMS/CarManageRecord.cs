@@ -14,6 +14,7 @@ namespace API.Models.CMS
         public DateTime SignInDate { get; set; }
 
         public string TempNumber { get; set; }
+        public string CarTempNumber { get; set; }
         public string SignInReason { get; set; }
         public string GoodsName { get; set; }
         public string GoodsCount { get; set; }

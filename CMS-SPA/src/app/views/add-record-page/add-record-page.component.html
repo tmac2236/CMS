@@ -61,6 +61,16 @@
                   required
                 />
               </div>
+              <div class="form-group col-md-3">
+                <label>{{ 'Report.titleList.carTempNumber' | translate }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="carTempNumber"
+                  [(ngModel)]="model.carTempNumber"
+                  required
+                />
+              </div>       
               <div class="form-group col-md-6">
                 <label>{{ 'Report.titleList.signInReason' | translate }}</label>
                 <select
