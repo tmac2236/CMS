@@ -77,6 +77,15 @@ export class CmsService {
     params = params.append('licenseNumber', sCarManageRecordDto.licenseNumber.toString());
     params = params.append('signInDateS', sCarManageRecordDto.signInDateS);
     params = params.append('signInDateE', sCarManageRecordDto.signInDateE);
+    if (sCarManageRecordDto.companyId != null){
+      params = params.append('companyId', sCarManageRecordDto.companyId.toString());
+    }
+    params = params.append('driverName', sCarManageRecordDto.driverName);
+    params = params.append('signInReason', sCarManageRecordDto.signInReason);
+    if (sCarManageRecordDto.departmentId != null){
+      params = params.append('departmentId', sCarManageRecordDto.departmentId.toString());
+    }
+    params = params.append('contactPerson', sCarManageRecordDto.contactPerson);
 
     return this.utility.http
     .get<CarManageRecordDto[]>(this.utility.baseUrl + 'CMS/getCarManageRecordDto' , {

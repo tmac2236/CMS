@@ -116,7 +116,7 @@ export class AddRecordPageComponent implements OnInit {
     );  
   }
   save(){
-    if(this.checkFormValidate()) {
+    if(!this.checkFormValidate("save")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
         "Please select Company、Department、Car !",
@@ -141,7 +141,8 @@ export class AddRecordPageComponent implements OnInit {
     );
   }
   edit(){
-    if(this.checkFormValidate()) {
+    debugger;
+    if(!this.checkFormValidate("edit")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
         "Please select Company、Department、Car !",
@@ -165,6 +166,13 @@ export class AddRecordPageComponent implements OnInit {
     );
   }
   signOut(){
+    if(!this.checkFormValidate("signOut")) {
+      this.utility.alertify.confirm(
+        "Sweet Alert",
+        "Please select Company、Department、Car、Goods Name、Good Count、Gaurd Name !",
+        () => {});  
+        return;
+    }
     this.utility.spinner.show();
     this.cmsService.signOutRecord(this.model).subscribe(
       (res) => {
@@ -233,10 +241,19 @@ export class AddRecordPageComponent implements OnInit {
         }
       ); 
   }
-  checkFormValidate(){
+  //isValid
+  checkFormValidate(type:string){
+    
     let flag = false;
-    if(this.model.companyId == null|| this.model.carId == null || this.model.departmentId ==null){
-      flag = true
+    if(this.model.companyId && this.model.carId && this.model.departmentId  ){
+      
+      if(type =="signOut"){ //SignOut 額外卡控
+        if (this.model.goodsName && this.model.goodsCount  && this.model.guardName ){
+          flag = true;
+        }
+      }else{
+        flag = true;
+      }
     }
     return flag;
   }

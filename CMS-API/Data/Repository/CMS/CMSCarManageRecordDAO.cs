@@ -20,21 +20,19 @@ namespace API.Data.Repository.CMS
         public async Task<List<CarManageRecordDto>> GetCarManageRecordDto(SCarManageRecordDto sCarManageRecordDto)
         {
 
-            List<SqlParameter> pc = new List<SqlParameter>{
-                new SqlParameter("@LicenseNumber",sCarManageRecordDto.LicenseNumber != null ? sCarManageRecordDto.LicenseNumber.Trim(): (object)DBNull.Value),
-                new SqlParameter("@SignInDateS",sCarManageRecordDto.SignInDateS),
-                new SqlParameter("@SignInDateE",sCarManageRecordDto.SignInDateE)
-            };
-            /*
-            var data = _context.GetCarManageRecordDto
-                   .FromSqlRaw("EXECUTE dbo.CMS_GetCarManageRecordDto @LicenseNumber,@SignInDateS,@SignInDateE", pc.ToArray())
-                   .ToList();
-            */
-            string strWhere = "";
-            if (sCarManageRecordDto.LicenseNumber == "" || sCarManageRecordDto.LicenseNumber == null)
-                strWhere += " WHERE SignInDate between @SignInDateS and @SignInDateE";
-            else
-                strWhere += " WHERE SignInDate between @SignInDateS and @SignInDateE AND @LicenseNumber = LicenseNumber ";
+            string strWhere = " WHERE SignInDate between '" + sCarManageRecordDto.SignInDateS + "' and '" + sCarManageRecordDto.SignInDateE + "' ";
+            if (!(sCarManageRecordDto.LicenseNumber == "" || sCarManageRecordDto.LicenseNumber == null))
+                strWhere += " AND LicenseNumber = '" + sCarManageRecordDto.LicenseNumber.Trim() + "' ";
+            if (!(sCarManageRecordDto.CompanyId != "" || sCarManageRecordDto.CompanyId != null))
+                strWhere += " AND CompanyId = " + sCarManageRecordDto.CompanyId;
+            if (!(sCarManageRecordDto.DriverName != "" || sCarManageRecordDto.DriverName != null))
+                strWhere += " AND DriverName = '" + sCarManageRecordDto.DriverName.Trim() + "' ";
+            if (!(sCarManageRecordDto.SignInReason != "" || sCarManageRecordDto.SignInReason != null))
+                strWhere += " AND SignInReason = '" + sCarManageRecordDto.SignInReason.Trim() + "' ";
+            if (!(sCarManageRecordDto.DepartmentId != "" || sCarManageRecordDto.DepartmentId != null))
+                strWhere += " AND DepartmentId = " + sCarManageRecordDto.DepartmentId;
+            if (!(sCarManageRecordDto.ContactPerson != "" || sCarManageRecordDto.ContactPerson != null))
+                strWhere += " AND ContactPerson = '" + sCarManageRecordDto.ContactPerson.Trim() + "' ";
 
             string strSQL = string.Format(@"
                                             SELECT 
@@ -59,14 +57,14 @@ namespace API.Data.Repository.CMS
                                             
                                                   ,C.CarSize		  AS	CarSize
                                             	  ,CP.CompanyDistance AS	CompanyDistance
-                                                  ,0                AS    isDisplay
+                                                  ,0                  AS    isDisplay
                                             
                                               FROM CMSCarManageRecord AS	CMR
                                               left join CMSCompany AS CP on CP.Id = CMR.CompanyId
                                               left join CMSDepartment AS DPM on DPM.ID = CMR.DepartmentId
                                               left join CMSCar AS C on C.Id = CMR.CarId ");
-            strSQL += strWhere;                                  
-            var data = await _context.GetCarManageRecordDto.FromSqlRaw(strSQL, pc.ToArray()).ToListAsync();
+            strSQL += strWhere;
+            var data = await _context.GetCarManageRecordDto.FromSqlRaw(strSQL).ToListAsync();
 
             return data;
 

@@ -21,7 +21,8 @@
         "inOutList": {
             "import":"Nhập Hàng",
             "export":"Xuất Hàng"
-        },        
+        },
+        "noteStr":"*Note: Ghì thêm đơn vị(Ví dụ: 1 tốn, 20 kiện, 30 kg...)",        
         "titleList":{
             "companyName":"Tên công ty",
             "plateNumber":"Số xe",
@@ -35,7 +36,7 @@
             "goodsName":"Tên hàng",
             "goodsCount":"Số lượng",
 
-            "departmentName":"Phòng ban",
+            "departmentName":"Vị trí giao hàng",
             "contactPerson":"Đơn vị/NV liên hệ",
             "sealNumber":"Số seal",
             "driverSign":"Tài xế ký tên",

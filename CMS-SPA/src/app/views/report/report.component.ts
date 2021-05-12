@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { UrlParamEnum } from "../../core/enum/urlParamEnum";
 import { Utility } from "../../core/utility/utility";
 import { CarManageRecordDto } from "../../core/_models/car-manage-record-dto";
+import { Company } from "../../core/_models/company";
+import { Department } from "../../core/_models/department";
 import { PaginatedResult } from "../../core/_models/pagination";
 import { SCarManageRecordDto } from "../../core/_models/s-car-manage-record-dto";
 import { CmsService } from "../../core/_services/cms.service";
@@ -19,37 +21,43 @@ export class ReportComponent implements OnInit {
     private route: Router,
     private cmsService: CmsService
   ) {}
-  
+
   result: CarManageRecordDto[] = [];
   scarManageRecordDto: SCarManageRecordDto = new SCarManageRecordDto();
   deadlineNow = new Date(new Date().getTime() - 86400000); // now minus one day
+  companyList: Company[] = [];
+  departmentList: Department[] = [];
 
   ngOnInit() {
+    this.getAllCompany();
+    this.getAllDepartment();
   }
 
   edit(model: CarManageRecordDto) {
-      var navigateTo = "/EditRecordPage";
-      var navigationExtras = {
-        queryParams: {
-          signInDate: model.signInDate,
-          licenseNumber: model.licenseNumber,
-          actionCode: UrlParamEnum.Report,
-        },
-        skipLocationChange: true,
-      };
-      this.route.navigate([navigateTo], navigationExtras);
-    
+    var navigateTo = "/EditRecordPage";
+    var navigationExtras = {
+      queryParams: {
+        signInDate: model.signInDate,
+        licenseNumber: model.licenseNumber,
+        actionCode: UrlParamEnum.Report,
+      },
+      skipLocationChange: true,
+    };
+    this.route.navigate([navigateTo], navigationExtras);
   }
 
   search() {
     this.utility.spinner.show();
     this.cmsService.getCarManageRecordDto(this.scarManageRecordDto).subscribe(
       (res: PaginatedResult<CarManageRecordDto[]>) => {
-        this.result = res.result.map((model) =>{
-          
-          if(new Date(model.signInDate).getTime() < new Date(this.deadlineNow).getTime()){
+        this.result = res.result.map((model) => {
+          if (
+            new Date(model.signInDate).getTime() <
+              new Date(this.deadlineNow).getTime() &&
+            model.signOutDate  //已出廠的才需要控管
+          ) {
             model.isDisplay = UrlParamEnum.NoNumber;
-          }else{
+          } else {
             model.isDisplay = UrlParamEnum.YesNumber;
           }
           return model;
@@ -94,6 +102,40 @@ export class ReportComponent implements OnInit {
 
   export() {
     const url = this.utility.baseUrl + "CMS/exportReport";
-    this.utility.exportFactory(url, "CMS_Report",this.scarManageRecordDto);
+    this.utility.exportFactory(url, "CMS_Report", this.scarManageRecordDto);
+  }
+  getAllDepartment() {
+    this.utility.spinner.show();
+    this.cmsService.getAllDepartment().subscribe(
+      (res) => {
+        this.utility.spinner.hide();
+        this.departmentList = res;
+      },
+      (error) => {
+        this.utility.spinner.hide();
+        this.utility.alertify.confirm(
+          "System Notice",
+          "Syetem is busy, please try later.",
+          () => {}
+        );
+      }
+    );
+  }
+  getAllCompany() {
+    this.utility.spinner.show();
+    this.cmsService.getAllCompany().subscribe(
+      (res) => {
+        this.utility.spinner.hide();
+        this.companyList = res;
+      },
+      (error) => {
+        this.utility.spinner.hide();
+        this.utility.alertify.confirm(
+          "System Notice",
+          "Syetem is busy, please try later.",
+          () => {}
+        );
+      }
+    );
   }
 }

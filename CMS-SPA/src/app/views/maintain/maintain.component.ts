@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UrlParamEnum } from "../../core/enum/urlParamEnum";
 import { Utility } from "../../core/utility/utility";
 import { Car } from "../../core/_models/car";
@@ -26,12 +27,16 @@ export class MaintainComponent implements OnInit {
 
   public departmentFormGroup: FormGroup;
   public departments: FormArray; // formArrayName
-
+  public role : string;
   constructor(
-    public utility: Utility,
-    private cmsService: CmsService,
-    private readonly fb: FormBuilder
+    public utility: Utility,private cmsService: CmsService,
+    private readonly fb: FormBuilder,private activeRouter: ActivatedRoute,
+    private route: Router,
   ) {
+    this.activeRouter.queryParams.subscribe((params) => {
+      this.role = params.role;
+    });
+
     this.companyFormGroup = this.fb.group({
       companys: this.fb.array([]),
     });
@@ -44,9 +49,11 @@ export class MaintainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllCompany();
-    this.getAllCar();
-    this.getAllDepartment();
+    if(this.role =='adm'){
+      this.getAllCompany();
+      this.getAllCar();
+      this.getAllDepartment();
+    }
   }
   getAllCar() {
     this.utility.spinner.show();
@@ -166,7 +173,9 @@ export class MaintainComponent implements OnInit {
           "Sweet Alert",
           "Save Success !",
           () => {
-            this.getAllCompany();
+            if(this.role =='adm'){
+              this.getAllCompany();
+            }
           }); 
       },
       (error) => {
@@ -221,7 +230,9 @@ export class MaintainComponent implements OnInit {
           "Sweet Alert",
           "Save Success !",
           () => {
-            this.getAllCar();
+            if(this.role =='adm'){
+              this.getAllCar();
+            }
           }); 
       },
       (error) => {
@@ -277,7 +288,9 @@ export class MaintainComponent implements OnInit {
           "Sweet Alert",
           "Save Success !",
           () => {
-            this.getAllDepartment();
+            if(this.role =='adm'){
+              this.getAllDepartment();
+            } 
           }); 
       },
       (error) => {

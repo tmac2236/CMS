@@ -7,6 +7,7 @@
         </div>
         <div class="card-body">
           <form #addModelForm="ngForm">
+            <!--------Row 1-------->
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>{{ 'Report.titleList.companyName' | translate }}</label>
@@ -14,18 +15,9 @@
                 name="companyName"
                 bindLabel="companyName"
                 bindValue="id"
+                [clearable]="false"
                 [(ngModel)]="model.companyId">
                 </ng-select>
-              </div>
-              <div class="form-group col-md-3">
-                <label>{{ 'Report.titleList.plateNumber' | translate }}</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="plateNumber"
-                  [(ngModel)]="model.plateNumber"
-                  required
-                />
               </div>
               <div class="form-group col-md-3">
                 <label>{{ 'Report.titleList.driverName' | translate }}</label>
@@ -37,9 +29,6 @@
                   required
                 />
               </div>
-            </div>
-
-            <div class="form-row">
               <div class="form-group col-md-3">
                 <label style="color:red;">{{ 'Report.titleList.licenseNumber' | translate }} *</label>
                 <input
@@ -51,15 +40,28 @@
                   required
                 />
               </div>
+            </div>
+            <!--------Row 2-------->
+            <div class="form-row">
               <div class="form-group col-md-3">
-                <label>{{ 'Report.titleList.tempNumber' | translate }}</label>
+                <label>{{ 'Report.titleList.plateNumber' | translate }}</label>
                 <input
                   type="text"
                   class="form-control"
-                  name="tempNumber"
-                  [(ngModel)]="model.tempNumber"
+                  name="plateNumber"
+                  [(ngModel)]="model.plateNumber"
                   required
                 />
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{ 'Report.titleList.carSize' | translate }}</label>
+                <ng-select [items]="carList"
+                name="departmentName"
+                bindLabel="carSize"
+                bindValue="id"
+                [clearable]="false"
+                [(ngModel)]="model.carId">
+                </ng-select>
               </div>
               <div class="form-group col-md-3">
                 <label>{{ 'Report.titleList.carTempNumber' | translate }}</label>
@@ -70,21 +72,62 @@
                   [(ngModel)]="model.carTempNumber"
                   required
                 />
-              </div>       
-              <div class="form-group col-md-6">
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{ 'Report.titleList.sealNumber' | translate }} ({{ 'Common.optional' | translate }})</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="sealNumber"
+                  [(ngModel)]="model.sealNumber"
+                />
+              </div>                                
+            </div>
+            <!--------Row 3-------->
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label>{{ 'Report.titleList.departmentName' | translate }}</label>
+                <ng-select [items]="departmentList"
+                name="departmentName"
+                bindLabel="departmentName"
+                bindValue="id"
+                [clearable]="false"
+                [(ngModel)]="model.departmentId">
+                </ng-select>
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{ 'Report.titleList.contactPerson' | translate }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="contactPerson"
+                  [(ngModel)]="model.contactPerson"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-3">
                 <label>{{ 'Report.titleList.signInReason' | translate }}</label>
                 <select
                 class="form-control"
                 name="signInReason"
                 [(ngModel)]="model.signInReason"
-                required
-              >
+                required>
                 <option value = "{{ 'Report.inOutList.import' | translate }}" selected>{{ 'Report.inOutList.import' | translate }}</option>
                 <option value = "{{ 'Report.inOutList.export' | translate }}" selected>{{ 'Report.inOutList.export' | translate }}</option>
-              </select>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label>{{ 'Report.titleList.tempNumber' | translate }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="tempNumber"
+                  [(ngModel)]="model.tempNumber"
+                  required
+                />
               </div>
             </div>
-
+            <!--------Row 4-------->
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label>{{ 'Report.titleList.goodsName' | translate }}({{ 'Common.optional' | translate }})</label>
@@ -103,57 +146,17 @@
                   name="goodsCount"
                   [(ngModel)]="model.goodsCount"
                 />
+                <label>{{ 'Report.noteStr' | translate }}</label>
               </div>
-              <div class="form-group col-md-3">
-                <label>{{ 'Report.titleList.departmentName' | translate }}</label>
-                <ng-select [items]="departmentList"
-                name="departmentName"
-                bindLabel="departmentName"
-                bindValue="id"
-                [(ngModel)]="model.departmentId">
-                </ng-select>
-              </div>
-              <div class="form-group col-md-3">
-                <label>{{ 'Report.titleList.contactPerson' | translate }}</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="contactPerson"
-                  [(ngModel)]="model.contactPerson"
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-md-3">
-                <label>{{ 'Report.titleList.sealNumber' | translate }} ({{ 'Common.optional' | translate }})</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="sealNumber"
-                  [(ngModel)]="model.sealNumber"
-                />
-              </div>
-              <div class="form-group col-md-2">
+              <div class="form-group col-md-1" *ngIf="this.model.signInDate">
                 <label>{{ 'Report.titleList.guardName' | translate }}</label>
                 <input
                   type="text"
                   class="form-control"
                   name="guardName"
                   [(ngModel)]="model.guardName"
-                  required
                 />
               </div>
-              <div class="form-group col-md-2">
-                <label>{{ 'Report.titleList.cardId' | translate }}</label>
-                <ng-select [items]="carList"
-                name="departmentName"
-                bindLabel="carSize"
-                bindValue="id"
-                [(ngModel)]="model.carId">
-                </ng-select>
-              </div>         
               <div class="form-group col-md-1" *ngIf="this.model.signInDate;else elseEditBtn">
                 <button type="button" class="btn btn-primary mt-4 btn-lg" 
                 (click)="edit()" [disabled]="!addModelForm.valid">{{ 'Common.btnList.edit' | translate }}</button>
@@ -179,7 +182,7 @@
                 (click)="this.signOut()" [hidden]="!this.model.signInDate">{{ 'Common.btnList.signOut' | translate }}</button>
               </div>
               <ng-template #elseSignoutDate>
-                <div class="form-group col-md-2" >
+                <div class="form-group col-md-1" >
                   <label>{{ 'Report.titleList.signOutDate' | translate }}</label>
                   <input
                     type="text"

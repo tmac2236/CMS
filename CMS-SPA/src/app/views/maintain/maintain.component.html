@@ -21,7 +21,7 @@
                           <div class="col-1">
                               <div class="form-group">
                                   <label>Id</label>
-                                  <input type="text" [ngClass]="{'bg-warning': company.dirty }" class="form-control" formControlName="id" readonly/>
+                                  <input type="text" [ngClass]="{'bg-warning': company.dirty }" class="form-control" formControlName="id" [readonly]="true"/>
                               </div>
                           </div>
                           <div class="col-8">
@@ -36,10 +36,12 @@
                                 <input type="text" class="form-control" formControlName="companyDistance"/>
                             </div>
                           </div>
+                          <!--
                           <div class="col-1" *ngIf="!this.company.value.id">
                             <label>&nbsp;</label>
                             <button type="button" class="btn btn-danger float-right mt-8" (click)="removeCompany(i)">Remove</button>
                           </div> 
+                          -->
                         </div>
                       </div>
                     </section> 
@@ -73,10 +75,12 @@
                                   <input type="text" class="form-control" formControlName="carSize"/>
                               </div>
                           </div>
+                          <!--
                           <div class="col-2" *ngIf="!this.car.value.id" >
                             <label>&nbsp;</label>
                             <button type="button" class="btn btn-danger float-right mt-8" (click)="removeCar(i)">Remove</button>
                           </div>
+                          -->
                         </div>
                       </div>
                     </section> 
@@ -109,10 +113,12 @@
                                   <input type="text" class="form-control" formControlName="departmentName"/>
                               </div>
                           </div>
+                          <!--
                           <div class="col-2" *ngIf="!this.department.value.id" >
                             <label>&nbsp;</label>
                             <button type="button" class="btn btn-danger float-right mt-8" (click)="removeDepartment(i)">Remove</button>
                           </div>
+                          -->
                         </div>
                       </div>
                     </section> 

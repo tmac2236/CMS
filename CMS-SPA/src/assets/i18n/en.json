@@ -22,6 +22,7 @@
                 "import":"Import",
                 "export":"Export"
         },
+        "noteStr":"*Note: Ghì thêm đơn vị(Ví dụ: 1 tốn, 20 kiện, 30 kg...)",
         "titleList":{
                 "companyName":"Company Name",
                 "plateNumber":"Plate Number",
