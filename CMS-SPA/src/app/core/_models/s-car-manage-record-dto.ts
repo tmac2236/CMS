@@ -9,6 +9,7 @@ export class SCarManageRecordDto extends Pagination {
   signInReason: string;
   departmentId: number;
   contactPerson: string;
+  signOutDate:string;
 
   constructor() {
     super();
@@ -19,6 +20,7 @@ export class SCarManageRecordDto extends Pagination {
     this.driverName = "";
     this.signInReason = "";
     this.contactPerson = "";
+    this.signOutDate = "N";
   }
   public setPagination(pagination: Pagination) {
     this.currentPage = pagination.currentPage;

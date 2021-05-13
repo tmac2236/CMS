@@ -13,5 +13,7 @@ namespace CMS_API.DTOs
         public string SignInReason { get; set; }
         public string DepartmentId { get; set; }
         public string ContactPerson { get; set; }
+        public string SignOutDate { get; set; }
+
     }
 }

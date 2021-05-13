@@ -22,7 +22,7 @@
             "import":"Nhập Hàng",
             "export":"Xuất Hàng"
         },
-        "noteStr":"*Note: Ghì thêm đơn vị(Ví dụ: 1 tốn, 20 kiện, 30 kg...)",        
+        "noteStr":"*Note: Ghi thêm đơn vị (VD: 1 tấn, 20 kiện, 30 kg...)",        
         "titleList":{
             "companyName":"Tên công ty",
             "plateNumber":"Số xe",

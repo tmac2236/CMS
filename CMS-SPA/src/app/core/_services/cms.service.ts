@@ -86,6 +86,8 @@ export class CmsService {
       params = params.append('departmentId', sCarManageRecordDto.departmentId.toString());
     }
     params = params.append('contactPerson', sCarManageRecordDto.contactPerson);
+    params = params.append('signOutDate', sCarManageRecordDto.signOutDate);
+    
 
     return this.utility.http
     .get<CarManageRecordDto[]>(this.utility.baseUrl + 'CMS/getCarManageRecordDto' , {

@@ -100,14 +100,27 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
       formData.append("file", file);
       formData.append("licenseNumber", this.urlParam.licenseNumber);
       formData.append("signInDate", this.urlParam.signInDate.toString());
+      
       this.cmsService.addSignaturePic(formData).subscribe(
         () => {
           this.utility.alertify.success("Add succeed!");
+          
+          var navigateTo = "/EditRecordPage";
+          var navigationExtras = {
+            queryParams: {
+              signInDate: this.urlParam.signInDate,
+              licenseNumber: this.urlParam.licenseNumber,
+              actionCode: UrlParamEnum.Signature,
+            },
+            skipLocationChange: true,
+          };
+          this.route.navigate([navigateTo], navigationExtras);
         },
         (error) => {
           this.utility.alertify.error("Add failed !!!!");
         }
       );
+      
     }
   }
 }

@@ -33,7 +33,12 @@ namespace API.Data.Repository.CMS
                 strWhere += " AND DepartmentId = " + sCarManageRecordDto.DepartmentId;
             if (!(sCarManageRecordDto.ContactPerson != "" || sCarManageRecordDto.ContactPerson != null))
                 strWhere += " AND ContactPerson = '" + sCarManageRecordDto.ContactPerson.Trim() + "' ";
-
+            if (sCarManageRecordDto.SignOutDate == "Y"){
+                strWhere += " AND SignOutDate is not null " ;
+            }else{
+                strWhere += " AND SignOutDate is null ";
+            }
+                
             string strSQL = string.Format(@"
                                             SELECT 
                                             	   CP.CompanyName	  AS	CompanyName

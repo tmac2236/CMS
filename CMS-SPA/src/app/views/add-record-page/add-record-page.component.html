@@ -86,7 +86,7 @@
             <!--------Row 3-------->
             <div class="form-row">
               <div class="form-group col-md-3">
-                <label>{{ 'Report.titleList.departmentName' | translate }}</label>
+                <label style="color:red;">{{ 'Report.titleList.departmentName' | translate }}</label>
                 <ng-select [items]="departmentList"
                 name="departmentName"
                 bindLabel="departmentName"
@@ -157,9 +157,11 @@
                   [(ngModel)]="model.guardName"
                 />
               </div>
-              <div class="form-group col-md-1" *ngIf="this.model.signInDate;else elseEditBtn">
+              <div class="form-group col-md-2" *ngIf="this.model.signInDate;else elseEditBtn">
                 <button type="button" class="btn btn-primary mt-4 btn-lg" 
                 (click)="edit()" [disabled]="!addModelForm.valid">{{ 'Common.btnList.edit' | translate }}</button>
+                <button type="button" class="btn btn-primary mt-4 btn-lg" 
+                (click)="signature()" >{{ 'Common.btnList.signature' | translate }}</button>
               </div>                                           
               <ng-template #elseEditBtn>
                 <div class="form-group col-md-1">
@@ -167,6 +169,10 @@
                   (click)="save()" [disabled]="!addModelForm.valid">{{ 'Common.btnList.save' | translate }}</button>
                 </div>  
               </ng-template>
+
+            </div>
+            <!--------Row 5-------->
+            <div class="form-row">
               <div class="form-group col-md-2" *ngIf="this.model.signInDate" >
                 <label>{{ 'Report.titleList.signInDate' | translate }}</label>
                 <input
@@ -182,7 +188,7 @@
                 (click)="this.signOut()" [hidden]="!this.model.signInDate">{{ 'Common.btnList.signOut' | translate }}</button>
               </div>
               <ng-template #elseSignoutDate>
-                <div class="form-group col-md-1" >
+                <div class="form-group col-md-2" >
                   <label>{{ 'Report.titleList.signOutDate' | translate }}</label>
                   <input
                     type="text"

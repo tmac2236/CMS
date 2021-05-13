@@ -32,6 +32,7 @@ export class AddRecordPageComponent implements OnInit {
         case UrlParamEnum.Signature :{
           this.model.signInDate = params.signInDate;
           this.model.licenseNumber = params.licenseNumber;
+          this.getTheRecord();
           break;
         }
         case UrlParamEnum.Report :{
@@ -46,6 +47,7 @@ export class AddRecordPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.getAllCarList();
     this.getAllCompany();
     this.getAllDepartment();
@@ -57,7 +59,7 @@ export class AddRecordPageComponent implements OnInit {
       queryParams: {
         signInDate: this.model.signInDate,
         licenseNumber: this.model.licenseNumber,
-        actionCode: UrlParamEnum.AddRecordSignature,
+        actionCode: UrlParamEnum.Report,
       },
       skipLocationChange: true,
     };
@@ -131,8 +133,8 @@ export class AddRecordPageComponent implements OnInit {
           "Sweet Alert",
           "Add Success !",
           () => { 
-            this.model = res;
-            this.signature(); });  
+            //this.model = res;
+           });  
       },
       (error) => {
         this.utility.spinner.hide();
