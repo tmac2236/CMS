@@ -192,6 +192,12 @@
                           <th style="width: 5%; background-color: #76daff">
                             {{ "Report.titleList.companyDistance" | translate }}
                           </th>
+                          <th style="width: 5%; background-color: #76daff">
+                            IsConfirm
+                          </th>
+                          <th style="width: 5%; background-color: #76daff">
+                            {{ "Report.titleList.memo" | translate }}
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -206,6 +212,14 @@
                                   width="30"
                                   height="30"
                                   (click)="this.edit(item)"
+                                />
+                              </div>
+                              <div class="mt-2" [hidden]="item.isConfirm == 'Y'">
+                                <img
+                                  src="../assets/systemImg/check.png"
+                                  width="30"
+                                  height="30"
+                                  (click)="this.confirmBtn(item)"
                                 />
                               </div>
                             </td>
@@ -244,6 +258,8 @@
 
                             <td>{{ item.carSize }}</td>
                             <td>{{ item.companyDistance }}</td>
+                            <td>{{ item.isConfirm }}</td>
+                            <td>{{ item.memo }}</td>
                           </tr>
                         </ng-container>
                       </tbody>

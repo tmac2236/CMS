@@ -237,6 +237,23 @@ namespace API.Controllers
                 return StatusCode(500, $"Internal server error: {ex}.");
             }
         }
+        [HttpPost("confirmRecord")]
+        public async Task<IActionResult> ConfirmRecord(CarManageRecordDto dto)
+        {
+            try
+            {
+                var theModel = _cMSCarManageRecordDAO
+                .FindSingle(x => x.LicenseNumber == dto.LicenseNumber && x.SignInDate == dto.SignInDate);
+                theModel.IsConfirm ="Y";
+                _cMSCarManageRecordDAO.Update(theModel);
+                await _cMSCarManageRecordDAO.SaveAll();
+                return Ok(theModel);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}.");
+            }
+        }
 
         [HttpPost("exportReport")]
         public async Task<IActionResult> ExportReport(SCarManageRecordDto sCarManageRecordDto)

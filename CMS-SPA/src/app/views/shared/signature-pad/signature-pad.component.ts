@@ -104,7 +104,7 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
       this.cmsService.addSignaturePic(formData).subscribe(
         () => {
           this.utility.alertify.success("Add succeed!");
-          
+          /*
           var navigateTo = "/EditRecordPage";
           var navigationExtras = {
             queryParams: {
@@ -115,6 +115,7 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
             skipLocationChange: true,
           };
           this.route.navigate([navigateTo], navigationExtras);
+          */
         },
         (error) => {
           this.utility.alertify.error("Add failed !!!!");

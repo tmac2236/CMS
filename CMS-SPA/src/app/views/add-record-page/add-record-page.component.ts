@@ -143,7 +143,6 @@ export class AddRecordPageComponent implements OnInit {
     );
   }
   edit(){
-    debugger;
     if(!this.checkFormValidate("edit")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
@@ -232,6 +231,8 @@ export class AddRecordPageComponent implements OnInit {
           this.model.sealNumber = res.sealNumber;
           this.model.guardName = res.guardName;
           this.model.carId = res.carId;
+          this.model.isConfirm = res.isConfirm;
+          this.model.memo = res.memo;
         },
         (error) => {
           this.utility.spinner.hide();

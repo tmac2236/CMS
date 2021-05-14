@@ -21,6 +21,8 @@ export class CarManageRecord extends Pagination {
   guardName: string;
 
   carId: number;
+  isConfirm :string;
+  memo :string;
 
   constructor() {
     super();

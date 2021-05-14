@@ -27,5 +27,7 @@ namespace API.Models.CMS
         public string GuardName { get; set; }
 
         public int CarId { get; set; }
+        public string IsConfirm { get; set; }
+        public string Memo { get; set; }
     }
 }

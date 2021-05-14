@@ -169,9 +169,20 @@
                   (click)="save()" [disabled]="!addModelForm.valid">{{ 'Common.btnList.save' | translate }}</button>
                 </div>  
               </ng-template>
-
             </div>
             <!--------Row 5-------->
+            <div class="form-row">
+              <div class="form-group col-md-12" >
+                <label>{{ 'Report.titleList.memo' | translate }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="memo"
+                  [(ngModel)]="model.memo"
+                />
+              </div>
+            </div>
+            <!--------Row 6-------->
             <div class="form-row">
               <div class="form-group col-md-2" *ngIf="this.model.signInDate" >
                 <label>{{ 'Report.titleList.signInDate' | translate }}</label>

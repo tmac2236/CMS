@@ -44,7 +44,8 @@
     
                 "guardName":"Guard Name",
                 "carSize":"Car Size",
-                "companyDistance":"Distance"
+                "companyDistance":"Distance",
+                "memo":"Memo"
 
         }
     }

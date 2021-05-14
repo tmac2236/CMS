@@ -63,6 +63,8 @@ namespace API.Data.Repository.CMS
                                                   ,C.CarSize		  AS	CarSize
                                             	  ,CP.CompanyDistance AS	CompanyDistance
                                                   ,0                  AS    isDisplay
+                                                  ,IsConfirm          AS    IsConfirm
+                                                  ,Memo               AS    Memo
                                             
                                               FROM CMSCarManageRecord AS	CMR
                                               left join CMSCompany AS CP on CP.Id = CMR.CompanyId

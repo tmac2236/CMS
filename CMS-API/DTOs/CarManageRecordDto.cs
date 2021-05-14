@@ -28,5 +28,7 @@ namespace CMS_API.DTOs
         public string CarSize { get; set; }
         public string CompanyDistance { get; set; }
         public int isDisplay { get; set; }
+        public string IsConfirm { get; set; }
+        public string Memo { get; set; }
     }
 }

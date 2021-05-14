@@ -44,7 +44,8 @@
 
             "guardName":"Bảo vệ ký tên",
             "carSize":"Qui cách xe",
-            "companyDistance":"khoảng cách"
+            "companyDistance":"khoảng cách",
+            "memo":"Memo"
 
         }
     }

@@ -56,6 +56,12 @@ export class CmsService {
       model
     );
   }
+  confirmRecord(model: CarManageRecordDto){
+    return this.utility.http.post<CarManageRecordDto>(
+      this.utility.baseUrl + 'CMS/confirmRecord',
+      model
+    );
+  }
   addSignaturePic(formData :FormData){
     console.log("cms.service addSignature:", formData);
     return this.utility.http.post(

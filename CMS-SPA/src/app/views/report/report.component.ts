@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UrlParamEnum } from "../../core/enum/urlParamEnum";
 import { Utility } from "../../core/utility/utility";
+import { CarManageRecord } from "../../core/_models/car-manage-record";
 import { CarManageRecordDto } from "../../core/_models/car-manage-record-dto";
 import { Company } from "../../core/_models/company";
 import { Department } from "../../core/_models/department";
@@ -138,4 +139,24 @@ export class ReportComponent implements OnInit {
       }
     );
   }
+  confirmBtn(model: CarManageRecordDto) {
+    this.utility.spinner.show();
+    model.isConfirm = 'Y';
+    
+    this.cmsService.confirmRecord(model).subscribe(
+      (res) => {
+        this.utility.spinner.hide();
+        this.utility.alertify.confirm(
+          "Sweet Alert",
+          "Confrim Success !",
+          () => {});  
+      },
+      (error) => {
+        this.utility.spinner.hide();
+        this.utility.alertify.error(error);
+      }
+    );
+    
+  }
+
 }
