@@ -28,6 +28,8 @@ export class MaintainComponent implements OnInit {
   public departmentFormGroup: FormGroup;
   public departments: FormArray; // formArrayName
   public role : string;
+
+  deadlineNow = new Date(new Date().getTime() - 7776000000); // now minus three months
   constructor(
     public utility: Utility,private cmsService: CmsService,
     private readonly fb: FormBuilder,private activeRouter: ActivatedRoute,
@@ -110,9 +112,18 @@ export class MaintainComponent implements OnInit {
           companys: this.fb.array([]),
         });
         res.map((x) => {
+          //check is need warn
+          if( new Date(x.createDate).getTime() > 
+            new Date(this.deadlineNow).getTime()
+          ){
+            x.isWarn = true;
+          }else{
+            x.isWarn = false;
+          }
+
           this.companys = this.getCompanyForm;
           this.companys.push(
-            this.createCompany(x.id, x.companyName, x.companyDistance)
+            this.createCompany(x.id, x.companyName, x.companyDistance,x.createDate,x.isWarn)
           );
         });
       },
@@ -134,12 +145,16 @@ export class MaintainComponent implements OnInit {
   createCompany(
     id?: number,
     companyName?: string,
-    companyDistance?: string
+    companyDistance?: string,
+    createDate?: Date,
+    isWarn?: boolean
   ): FormGroup {
     return this.fb.group({
       id: id,
       companyName: companyName,
       companyDistance: companyDistance,
+      createDate:createDate,
+      isWarn:isWarn
     });
   }
   addEmptyCompany(): void {    
@@ -164,6 +179,8 @@ export class MaintainComponent implements OnInit {
       }
       company.companyName = companyForm.value.companyName;
       company.companyDistance = companyForm.value.companyDistance;
+      company.createDate = companyForm.value.createDate;
+      company.isWarn = companyForm.value.isWarn;
       companyList.push(company);
     });
     this.cmsService.addOrUpdateCompanyList(companyList).subscribe(

@@ -24,7 +24,7 @@
                                   <input type="text" [ngClass]="{'bg-warning': company.dirty }" class="form-control" formControlName="id" [readonly]="true"/>
                               </div>
                           </div>
-                          <div class="col-8">
+                          <div class="col-6">
                               <div class="form-group">
                                   <label>Company Name</label>
                                   <input type="text" class="form-control" formControlName="companyName"/>
@@ -34,6 +34,12 @@
                             <div class="form-group">
                                 <label>Company Distance</label>
                                 <input type="text" class="form-control" formControlName="companyDistance"/>
+                            </div>
+                          </div>
+                          <div class="col-3">
+                            <div class="form-group">
+                                <label>CreateDate</label>
+                                <input type="datetime"[ngClass]="{'bg-warning': this.company.value.isWarn }" class="form-control" formControlName="createDate" [readonly]="true"/>
                             </div>
                           </div>
                           <!--

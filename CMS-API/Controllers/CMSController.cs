@@ -39,6 +39,7 @@ namespace API.Controllers
                 var addList = companyList.Where(x => x.Id == 0).ToList();
                 updateList.ForEach(m =>
                 {
+                    m.CreateDate = Extensions.GetDateTimeNowInMillionSec();
                     _cMSCompanyDAO.Update(m);
                 });
                 await _cMSCompanyDAO.SaveAll();
@@ -48,6 +49,7 @@ namespace API.Controllers
                 {
                     lastId++;
                     m.Id = lastId;
+                    m.CreateDate = Extensions.GetDateTimeNowInMillionSec();
                     _cMSCompanyDAO.Add(m);
                 });
 
