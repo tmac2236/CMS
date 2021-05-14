@@ -54,6 +54,13 @@ export class AddRecordPageComponent implements OnInit {
   }
 
   signature() {
+    if(!this.checkFormValidate("signOut")) {
+      this.utility.alertify.confirm(
+        "Sweet Alert",
+        "Please select Company、Department、Car、Goods Name、Good Count、Gaurd Name !",
+        () => {});  
+        return;
+    }
     var navigateTo = "/ESignature";
     var navigationExtras = {
       queryParams: {
@@ -146,7 +153,7 @@ export class AddRecordPageComponent implements OnInit {
     if(!this.checkFormValidate("edit")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
-        "Please select Company、Department、Car !",
+        "Please select Company、Department、Car、Goods Name、Good Count、Gaurd Name !",
         () => {});  
         return;
     }
@@ -249,8 +256,7 @@ export class AddRecordPageComponent implements OnInit {
     
     let flag = false;
     if(this.model.companyId && this.model.carId && this.model.departmentId  ){
-      
-      if(type =="signOut"){ //SignOut 額外卡控
+      if(type =="signOut" || type =="edit"){ //SignOut 額外卡控
         if (this.model.goodsName && this.model.goodsCount  && this.model.guardName ){
           flag = true;
         }

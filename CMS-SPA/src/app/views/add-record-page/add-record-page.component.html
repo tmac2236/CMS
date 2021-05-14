@@ -148,7 +148,7 @@
                 />
                 <label>{{ 'Report.noteStr' | translate }}</label>
               </div>
-              <div class="form-group col-md-1" *ngIf="this.model.signInDate">
+              <div class="form-group col-md-3" *ngIf="this.model.signInDate">
                 <label>{{ 'Report.titleList.guardName' | translate }}</label>
                 <input
                   type="text"
@@ -157,18 +157,20 @@
                   [(ngModel)]="model.guardName"
                 />
               </div>
-              <div class="form-group col-md-2" *ngIf="this.model.signInDate;else elseEditBtn">
+              <div class="form-group col-md-1" *ngIf="this.model.signInDate;else elseEditBtn">
                 <button type="button" class="btn btn-primary mt-4 btn-lg" 
                 (click)="edit()" [disabled]="!addModelForm.valid">{{ 'Common.btnList.edit' | translate }}</button>
-                <button type="button" class="btn btn-primary mt-4 btn-lg" 
-                (click)="signature()" >{{ 'Common.btnList.signature' | translate }}</button>
-              </div>                                           
+              </div>                                        
               <ng-template #elseEditBtn>
                 <div class="form-group col-md-1">
                   <button type="button" class="btn btn-primary mt-4 btn-lg" 
                   (click)="save()" [disabled]="!addModelForm.valid">{{ 'Common.btnList.save' | translate }}</button>
                 </div>  
               </ng-template>
+              <div class="form-group col-md-2" *ngIf="!this.model.signOutDate && this.model.signInDate">
+                <button type="button" class="btn btn-primary mt-4 btn-lg" 
+                (click)="signature()" >{{ 'Common.btnList.signature' | translate }}</button>
+              </div>   
             </div>
             <!--------Row 5-------->
             <div class="form-row">
@@ -195,8 +197,10 @@
                 />
               </div> 
               <div class="form-group col-md-2" *ngIf="!this.model.signOutDate; else elseSignoutDate" >
+                <!--
                 <button type="button" class="btn btn-warning mt-4 btn-lg" 
                 (click)="this.signOut()" [hidden]="!this.model.signInDate">{{ 'Common.btnList.signOut' | translate }}</button>
+                 -->
               </div>
               <ng-template #elseSignoutDate>
                 <div class="form-group col-md-2" >
@@ -210,6 +214,7 @@
                   />
                 </div> 
               </ng-template>
+              
             </div>
           </form>
         </div>

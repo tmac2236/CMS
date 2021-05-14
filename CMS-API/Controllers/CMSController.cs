@@ -54,7 +54,7 @@ namespace API.Controllers
                 });
 
                 await _cMSCompanyDAO.SaveAll();
-                
+
                 return Ok(true);
             }
             catch (Exception ex)
@@ -84,7 +84,7 @@ namespace API.Controllers
                 });
 
                 await _cMSCarDAO.SaveAll();
-                
+
                 return Ok(true);
             }
             catch (Exception ex)
@@ -114,14 +114,14 @@ namespace API.Controllers
                 });
 
                 await _cMSDepartmentDAO.SaveAll();
-                
+
                 return Ok(true);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex}.");
             }
-        }                
+        }
         [HttpGet("getAllCarList")]
         public IActionResult GetAllCarList()
         {
@@ -229,10 +229,12 @@ namespace API.Controllers
         {
             try
             {
-                model.SignOutDate = Extensions.GetDateTimeNowInMillionSec();
-                _cMSCarManageRecordDAO.Update(model);
+                var theModel = _cMSCarManageRecordDAO
+                    .FindSingle(x => x.LicenseNumber == model.LicenseNumber && x.SignInDate == model.SignInDate);
+                theModel.SignOutDate = Extensions.GetDateTimeNowInMillionSec();
+                _cMSCarManageRecordDAO.Update(theModel);
                 await _cMSCarManageRecordDAO.SaveAll();
-                return Ok(model);
+                return Ok(theModel);
             }
             catch (Exception ex)
             {
@@ -246,7 +248,7 @@ namespace API.Controllers
             {
                 var theModel = _cMSCarManageRecordDAO
                 .FindSingle(x => x.LicenseNumber == dto.LicenseNumber && x.SignInDate == dto.SignInDate);
-                theModel.IsConfirm ="Y";
+                theModel.IsConfirm = "Y";
                 _cMSCarManageRecordDAO.Update(theModel);
                 await _cMSCarManageRecordDAO.SaveAll();
                 return Ok(theModel);

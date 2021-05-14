@@ -103,25 +103,22 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
       
       this.cmsService.addSignaturePic(formData).subscribe(
         () => {
-          this.utility.alertify.success("Add succeed!");
-          /*
-          var navigateTo = "/EditRecordPage";
-          var navigationExtras = {
-            queryParams: {
-              signInDate: this.urlParam.signInDate,
-              licenseNumber: this.urlParam.licenseNumber,
-              actionCode: UrlParamEnum.Signature,
-            },
-            skipLocationChange: true,
-          };
-          this.route.navigate([navigateTo], navigationExtras);
-          */
+          var model = new CarManageRecord();
+          model.licenseNumber = this.urlParam.licenseNumber;
+          model.signInDate = this.urlParam.signInDate;
+          this.cmsService.signOutRecord(model).subscribe(
+            (res) => {},
+            (error) => {}
+          );
         },
         (error) => {
           this.utility.alertify.error("Add failed !!!!");
+        },()=>{
+          alert("You has been sign out here !");
         }
       );
       
     }
   }
+  
 }
