@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
           <tabset>
-            <tab heading="Maintain Company" id="tab1">
+            <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.company' | translate }}" id="tab1">
             
               <form [formGroup]="companyFormGroup" class="container mt-3" (ngSubmit)="submitCompanyList()">
                 <div class="row justify-content-center">
@@ -24,15 +24,15 @@
                                   <input type="text" [ngClass]="{'bg-warning': company.dirty }" class="form-control" formControlName="id" [readonly]="true"/>
                               </div>
                           </div>
-                          <div class="col-6">
+                          <div class="col-5">
                               <div class="form-group">
-                                  <label>Company Name</label>
+                                  <label>{{ 'Report.titleList.companyName' | translate }}</label>
                                   <input type="text" class="form-control" formControlName="companyName"/>
                               </div>
                           </div>
                           <div class="col-2">
                             <div class="form-group">
-                                <label>Company Distance</label>
+                                <label>{{ 'Report.titleList.companyDistance' | translate }}</label>
                                 <input type="text" class="form-control" formControlName="companyDistance"/>
                             </div>
                           </div>
@@ -42,24 +42,24 @@
                                 <input type="datetime"[ngClass]="{'bg-warning': this.company.value.isWarn }" class="form-control" formControlName="createDate" [readonly]="true"/>
                             </div>
                           </div>
-                          <!--
+                          
                           <div class="col-1" *ngIf="!this.company.value.id">
                             <label>&nbsp;</label>
-                            <button type="button" class="btn btn-danger float-right mt-8" (click)="removeCompany(i)">Remove</button>
+                            <button type="button" class="btn btn-danger float-right mt-8" (click)="removeCompany(i)">Cancel</button>
                           </div> 
-                          -->
+                          
                         </div>
                       </div>
                     </section> 
-                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCompany()">Add Company</button>
-                    <input type="submit" class="btn btn-success mb-2" value="Submit"/>              
+                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCompany()">{{ 'Maintain.add' | translate }} {{ 'Maintain.company' | translate }}</button>
+                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>              
                   </div>
                 </div>
               </form>  
              
             </tab>
 
-            <tab heading="Maintain Car">
+            <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.car' | translate }}">
               <form [formGroup]="carFormGroup" class="container mt-3" (ngSubmit)="submitCarList()">
                 <div class="row justify-content-center">
                   <div class="col-6">
@@ -77,27 +77,27 @@
                           </div>
                           <div class="col-8">
                               <div class="form-group">
-                                  <label>Car Size</label>
+                                  <label>{{ 'Report.titleList.carSize' | translate }}</label>
                                   <input type="text" class="form-control" formControlName="carSize"/>
                               </div>
                           </div>
-                          <!--
-                          <div class="col-2" *ngIf="!this.car.value.id" >
+                          
+                          <div class="col-1" *ngIf="!this.car.value.id" >
                             <label>&nbsp;</label>
-                            <button type="button" class="btn btn-danger float-right mt-8" (click)="removeCar(i)">Remove</button>
+                            <button type="button" class="btn btn-danger float-right mt-8" (click)="removeCar(i)">Cancel</button>
                           </div>
-                          -->
+                          
                         </div>
                       </div>
                     </section> 
-                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCar()">Add Car</button>
-                    <input type="submit" class="btn btn-success mb-2" value="Submit"/>              
+                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCar()">{{ 'Maintain.add' | translate }} {{ 'Maintain.car' | translate }}</button>
+                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>              
                   </div>
                 </div>
               </form>             
             </tab>
 
-            <tab heading="Maintain Department">
+            <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.department' | translate }}">
               <form [formGroup]="departmentFormGroup" class="container mt-3" (ngSubmit)="submitDepartmentList()">
                 <div class="row justify-content-center">
                   <div class="col-6">
@@ -115,21 +115,21 @@
                           </div>
                           <div class="col-8">
                               <div class="form-group">
-                                  <label>Department Name</label>
+                                  <label>{{ 'Report.titleList.departmentName' | translate }}</label>
                                   <input type="text" class="form-control" formControlName="departmentName"/>
                               </div>
                           </div>
-                          <!--
-                          <div class="col-2" *ngIf="!this.department.value.id" >
+                          
+                          <div class="col-1" *ngIf="!this.department.value.id" >
                             <label>&nbsp;</label>
-                            <button type="button" class="btn btn-danger float-right mt-8" (click)="removeDepartment(i)">Remove</button>
+                            <button type="button" class="btn btn-danger float-right mt-8" (click)="removeDepartment(i)">Cancel</button>
                           </div>
-                          -->
+                          
                         </div>
                       </div>
                     </section> 
-                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyDepartment()">Add Department</button>
-                    <input type="submit" class="btn btn-success mb-2" value="Submit"/>              
+                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyDepartment()">{{ 'Maintain.add' | translate }} {{ 'Maintain.department' | translate }}</button>
+                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>              
                   </div>
                 </div>
               </form>  

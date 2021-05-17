@@ -1,19 +1,20 @@
 {   "Common":{
         "currentLang":"Tiếng Việt",
-        "hello":"ơi",
-        "loadingPleaseWait":"Xin chờ một chút nà.",
+        "hello":"Xin chào",
+        "loadingPleaseWait":" Xin vui lòng chờ một chút.",
         "optional":"Nếu Có",
         "pleaseKeyPassword":"Vui Lòng Nhập Mật Khẩu",
         "close":"Đóng",
-        "check":"kiểm Tra",
+        "check":"OK",
         "btnList": {
             "search": "Tìm kiếm",
-            "export": "Xuất Khẩu",
-            "save": "Lưu Dât",
+            "export": "Xuất Excel",
+            "save": "Lưu",
             "edit":"Sửa Đổi",
-            "signature":"Chữ ký",
+            "signature":"Tài xế ký tên",
             "clear":"Xóa",
-            "signOut":"Rời Xưởng"
+            "signOut":"Rời Xưởng",
+            "goBack":"Trang trước"
         }
     },
     "Report": {
@@ -46,8 +47,15 @@
             "carSize":"Qui cách xe",
             "companyDistance":"khoảng cách",
             "memo":"Memo"
-
         }
+    },
+    "Maintain":{
+        "title": "Cài đặt",
+        "company":"Công ty",
+        "car":"Quy cách Xe",
+        "department":"Vị trí giao hàng",
+        "add":"Thêm",
+        "submit":"Lưu"
     }
 }
  

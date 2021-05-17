@@ -21,16 +21,20 @@
           <br />
           <section class="container">
             <div class="row">
-              <div class="col-6">
+              <div class="col-4">
                 <button class="btn btn-block btn-danger btn-lg" (click)="clear()">
                   {{ 'Common.btnList.clear' | translate }}
                 </button>
               </div>
-              <div class="col-6">
+              <div class="col-4">
                 <button class="btn btn-block btn-success btn-lg" (click)="save()">
                   {{ 'Common.btnList.save' | translate }}
                 </button>
               </div>
+              <div class="col-4">
+                <button class="btn btn-block btn-primary btn-lg" 
+                (click)="toEdit()">{{ 'Common.btnList.goBack' | translate }}</button>
+              </div> 
             </div>
           </section>
         </div>

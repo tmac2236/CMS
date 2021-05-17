@@ -6,7 +6,14 @@
           <app-one-page-header></app-one-page-header>
         </div>
         <div class="card-body">
+          <!-- Row 0 -->
           <form #addModelForm="ngForm">
+            <div class="form-row">
+              <div class="form-group col-md-2" *ngIf="this.model.signInDate">
+                <button type="button" class="btn btn-primary mt-4 ml-2 btn-lg" 
+                (click)="toReport()">{{ 'Common.btnList.goBack' | translate }}</button>
+              </div> 
+            </div>
             <!--------Row 1-------->
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -148,7 +155,7 @@
                 />
                 <label>{{ 'Report.noteStr' | translate }}</label>
               </div>
-              <div class="form-group col-md-3" *ngIf="this.model.signInDate">
+              <div class="form-group col-md-2" *ngIf="this.model.signInDate">
                 <label>{{ 'Report.titleList.guardName' | translate }}</label>
                 <input
                   type="text"
@@ -167,10 +174,10 @@
                   (click)="save()" [disabled]="!addModelForm.valid">{{ 'Common.btnList.save' | translate }}</button>
                 </div>  
               </ng-template>
-              <div class="form-group col-md-2" *ngIf="!this.model.signOutDate && this.model.signInDate">
+              <div class="form-group col-md-1" *ngIf="!this.model.signOutDate && this.model.signInDate && isValidinDB">
                 <button type="button" class="btn btn-primary mt-4 btn-lg" 
                 (click)="signature()" >{{ 'Common.btnList.signature' | translate }}</button>
-              </div>   
+              </div>    
             </div>
             <!--------Row 5-------->
             <div class="form-row">

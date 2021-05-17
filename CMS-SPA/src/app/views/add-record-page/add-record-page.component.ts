@@ -20,6 +20,7 @@ export class AddRecordPageComponent implements OnInit {
   carList: Car[] = [];
   companyList: Company[] = [];
   departmentList: Department[] =[];
+  isValidinDB:boolean = false;
 
   constructor(
     public utility: Utility,private activeRouter: ActivatedRoute,private route: Router,private cmsService:CmsService) {
@@ -47,7 +48,6 @@ export class AddRecordPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.getAllCarList();
     this.getAllCompany();
     this.getAllDepartment();
@@ -165,7 +165,9 @@ export class AddRecordPageComponent implements OnInit {
           "Sweet Alert",
           "Edit Success !",
           () => { 
-            this.model = res; });  
+            this.model = res;
+            this.isValidinDB = true;
+          });  
       },
       (error) => {
         this.utility.spinner.hide();
@@ -203,6 +205,7 @@ export class AddRecordPageComponent implements OnInit {
         (res) => {
           this.utility.spinner.hide();
           this.model = res;
+          this.isValidinDB = this.checkFormValidate("edit");
         },
         (error) => {
           this.utility.spinner.hide();
@@ -253,7 +256,6 @@ export class AddRecordPageComponent implements OnInit {
   }
   //isValid
   checkFormValidate(type:string){
-    
     let flag = false;
     if(this.model.companyId && this.model.carId && this.model.departmentId  ){
       if(type =="signOut" || type =="edit"){ //SignOut 額外卡控
@@ -265,5 +267,14 @@ export class AddRecordPageComponent implements OnInit {
       }
     }
     return flag;
+  }
+  toReport(){
+    var navigateTo = "/Report";
+    var navigationExtras = {
+      queryParams: {
+      },
+      skipLocationChange: true,
+    };
+    this.route.navigate([navigateTo], navigationExtras);
   }
 }

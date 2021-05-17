@@ -5,7 +5,7 @@
         "optional":"Optional",
         "pleaseKeyPassword":"Please Key Password",
         "close":"Close",
-        "check":"Check",
+        "check":"OK",
         "btnList": {
             "search": "Search",
             "export": "Export",
@@ -13,7 +13,8 @@
             "edit":"Edit",
             "signature":"Signature",
             "clear":"Clear",
-            "signOut":"SignOut"
+            "signOut":"SignOut",
+            "goBack":"Previous page"
         }
     },
     "Report": {
@@ -46,7 +47,14 @@
                 "carSize":"Car Size",
                 "companyDistance":"Distance",
                 "memo":"Memo"
-
         }
+    },
+    "Maintain":{
+        "title": "Maintain",
+        "company":"Company",
+        "car":"Car",
+        "department":"Department",
+        "add":"Add",
+        "submit":"Submit"
     }
 }
