@@ -148,7 +148,7 @@ export class ReportComponent implements OnInit {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
           "Sweet Alert",
-          "Confrim Success !",
+          "Confirm Success !",
           () => {});  
       },
       (error) => {

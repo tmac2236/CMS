@@ -279,38 +279,17 @@ namespace API.Controllers
         {
             try
             {
-                string rootdir = Directory.GetCurrentDirectory();
-                var localStr = _config.GetSection("AppSettings:ReportPics").Value;
-                var pjName = _config.GetSection("AppSettings:ProjectName").Value;
-                var pathToSave = rootdir + localStr;
-                pathToSave = pathToSave.Replace(pjName + "-API", pjName + "-SPA");
-                if (source.File.Length > 0)
+                //檔名含副檔名
+                var formateDate = source.SignInDate.Replace(" ", "-").Replace(":", "-").Replace(".", "-");
+                var fileName = source.LicenseNumber + "_" + formateDate + ".jpg";
+                if (await SaveFiletoServer(source.File, "ReportPics", fileName))
                 {
-                    //檔名含副檔名
-                    var formateDate = source.SignInDate.Replace(" ", "-").Replace(":", "-").Replace(".", "-");
-                    var fileName = source.LicenseNumber + "_" + formateDate + ".jpg";
-                    //新增檔名的全路徑
-                    var fullPath = Path.Combine(pathToSave, fileName);
-                    if (!Directory.Exists(pathToSave))
-                    {
-                        DirectoryInfo di = Directory.CreateDirectory(pathToSave);
-                    }
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        source.File.CopyTo(stream);
-
-                        DateTime dt = Convert.ToDateTime(source.SignInDate);
-                        var theModel = _cMSCarManageRecordDAO.FindSingle(x => x.LicenseNumber == source.LicenseNumber && x.SignInDate == dt);
-                        theModel.DriverSign = fileName;
-                        await _cMSCarManageRecordDAO.SaveAll();
-                    }
-                    return Ok();
+                    DateTime dt = Convert.ToDateTime(source.SignInDate);
+                    var theModel = _cMSCarManageRecordDAO.FindSingle(x => x.LicenseNumber == source.LicenseNumber && x.SignInDate == dt);
+                    theModel.DriverSign = fileName;
+                    await _cMSCarManageRecordDAO.SaveAll();
                 }
-                else
-                {
-                    return BadRequest();
-                }
-
+                return Ok();
             }
             catch (Exception ex)
             {

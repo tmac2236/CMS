@@ -140,7 +140,7 @@ export class AddRecordPageComponent implements OnInit {
           "Sweet Alert",
           "Add Success !",
           () => { 
-            //this.model = res;
+            this.model = new CarManageRecord();
            });  
       },
       (error) => {
