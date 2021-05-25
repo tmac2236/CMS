@@ -35,7 +35,7 @@ namespace API.Data.Repository.CMS
                 strWhere += " AND ContactPerson = '" + sCarManageRecordDto.ContactPerson.Trim() + "' ";
             if (sCarManageRecordDto.SignOutDate == "Y"){
                 strWhere += " AND SignOutDate is not null " ;
-            }else{
+            }else if(sCarManageRecordDto.SignOutDate == "N"){
                 strWhere += " AND SignOutDate is null ";
             }
                 

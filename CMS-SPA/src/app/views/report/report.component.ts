@@ -30,6 +30,8 @@ export class ReportComponent implements OnInit {
   departmentList: Department[] = [];
 
   ngOnInit() {
+    this.scarManageRecordDto.signInDateS = this.utility.datepiper.transform(new Date(), 'yyyy-MM-dd');
+    this.scarManageRecordDto.signInDateE = this.utility.datepiper.transform(new Date(), 'yyyy-MM-dd');
     this.getAllCompany();
     this.getAllDepartment();
   }

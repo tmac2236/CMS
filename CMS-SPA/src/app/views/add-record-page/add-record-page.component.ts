@@ -57,7 +57,7 @@ export class AddRecordPageComponent implements OnInit {
     if(!this.checkFormValidate("signOut")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
-        "Please select Company、Department、Car、Goods Name、Good Count、Gaurd Name !",
+        "Please select Company、Department、Car、Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
     }
@@ -153,7 +153,7 @@ export class AddRecordPageComponent implements OnInit {
     if(!this.checkFormValidate("edit")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
-        "Please select Company、Department、Car、Goods Name、Good Count、Gaurd Name !",
+        "Please select Company、Department、Car、Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
     }
@@ -179,7 +179,7 @@ export class AddRecordPageComponent implements OnInit {
     if(!this.checkFormValidate("signOut")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
-        "Please select Company、Department、Car、Goods Name、Good Count、Gaurd Name !",
+        "Please select Company、Department、Car、Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
     }
@@ -231,8 +231,8 @@ export class AddRecordPageComponent implements OnInit {
           this.model.plateNumber = res.plateNumber;
           this.model.driverName = res.driverName;
           this.model.licenseNumber = res.licenseNumber;
-          this.model.tempNumber = res.tempNumber;
-          this.model.carTempNumber = res.carTempNumber;
+          //this.model.tempNumber = res.tempNumber;
+          //this.model.carTempNumber = res.carTempNumber;
           this.model.signInReason = res.signInReason;
           this.model.goodsName = res.goodsName;
           this.model.goodsCount = res.goodsCount;
@@ -241,7 +241,7 @@ export class AddRecordPageComponent implements OnInit {
           this.model.sealNumber = res.sealNumber;
           this.model.guardName = res.guardName;
           this.model.carId = res.carId;
-          this.model.isConfirm = res.isConfirm;
+          //this.model.isConfirm = res.isConfirm;
           this.model.memo = res.memo;
         },
         (error) => {

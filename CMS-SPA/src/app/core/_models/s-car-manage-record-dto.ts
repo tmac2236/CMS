@@ -20,7 +20,7 @@ export class SCarManageRecordDto extends Pagination {
     this.driverName = "";
     this.signInReason = "";
     this.contactPerson = "";
-    this.signOutDate = "N";
+    this.signOutDate = "";  //預設全部All
   }
   public setPagination(pagination: Pagination) {
     this.currentPage = pagination.currentPage;

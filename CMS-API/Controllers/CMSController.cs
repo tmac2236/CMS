@@ -265,8 +265,8 @@ namespace API.Controllers
 
             if (sCarManageRecordDto.SignInDateS == "" || sCarManageRecordDto.SignInDateS == null) sCarManageRecordDto.SignInDateS = _config.GetSection("LogicSettings:MinDate").Value;
             if (sCarManageRecordDto.SignInDateE == "" || sCarManageRecordDto.SignInDateE == null) sCarManageRecordDto.SignInDateE = _config.GetSection("LogicSettings:MaxDate").Value;
-
-
+            sCarManageRecordDto.SignInDateE = sCarManageRecordDto.SignInDateE.ToDateTime().AddDays(1).ToString().Substring(0,10).Replace('/','-');
+            
             var data = await _cMSCarManageRecordDAO.GetCarManageRecordDto(sCarManageRecordDto);
 
             byte[] result = CommonExportReport(data, "TempCarRecord.xlsx");
@@ -304,6 +304,7 @@ namespace API.Controllers
             {
                 if (sCarManageRecordDto.SignInDateS == "" || sCarManageRecordDto.SignInDateS == null) sCarManageRecordDto.SignInDateS = _config.GetSection("LogicSettings:MinDate").Value;
                 if (sCarManageRecordDto.SignInDateE == "" || sCarManageRecordDto.SignInDateE == null) sCarManageRecordDto.SignInDateE = _config.GetSection("LogicSettings:MaxDate").Value;
+                sCarManageRecordDto.SignInDateE = sCarManageRecordDto.SignInDateE.ToDateTime().AddDays(1).ToString().Substring(0,10).Replace('/','-');
 
                 var data = await _cMSCarManageRecordDAO.GetCarManageRecordDto(sCarManageRecordDto);
                 PagedList<CarManageRecordDto> result = PagedList<CarManageRecordDto>.Create(data, sCarManageRecordDto.PageNumber, sCarManageRecordDto.PageSize, sCarManageRecordDto.IsPaging);

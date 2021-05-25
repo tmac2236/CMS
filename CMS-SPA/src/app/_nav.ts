@@ -2,6 +2,22 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
+    name: 'AddRecordPage',
+    url: '/AddRecordPage',
+    icon: 'icon-puzzle',
+  },
+  {
+    name: 'Report',
+    url: '/Report',
+    icon: 'icon-puzzle',
+  },
+  {
+    name: 'Maintain',
+    url: '/Maintain',
+    icon: 'icon-puzzle',
+  },
+  /*
+  {
     title: true,
     name: 'Excel',
   },
@@ -15,7 +31,7 @@ export const navItems: INavData[] = [
     url: '/excel/macro',
     icon: 'icon-puzzle',
   },
-    /*
+
   {
     name: "Dashboard",
     url: "/dashboard",

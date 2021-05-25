@@ -40,9 +40,9 @@ export class OnePageHeaderComponent {
   check(modalName :string){
     this.infoModal.hide();
     let role ="";
-    if(this.keyPassword == this.utility.gaurdPassword) role = "gaurd";
+    if(this.keyPassword == this.utility.guardPassword) role = "guard";
     if(this.keyPassword == this.utility.admPassword) role = "adm";
-    if(modalName == "Report" && (role == "gaurd" || role == "adm")) {
+    if(modalName == "Report" && (role == "guard" || role == "adm")) {
       var navigateTo = "/"+ this.modalName;  //dynamic name
       var navigationExtras = {
         queryParams: {
@@ -51,7 +51,7 @@ export class OnePageHeaderComponent {
         skipLocationChange: true,
       };
       this.route.navigate([navigateTo], navigationExtras);
-    }else if ( modalName == "Maintain" && (role == "gaurd" || role == "adm")){
+    }else if ( modalName == "Maintain" && (role == "guard" || role == "adm")){
       var navigateTo = "/"+ this.modalName;  //dynamic name
       var navigationExtras = {
         queryParams: {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Utility } from "../../core/utility/utility";
 import { User } from '../../core/_models/user';
 import { AlertifyService } from "../../core/_services/alertify.service";
 import { AuthService } from "../../core/_services/auth.service";
@@ -19,7 +20,8 @@ export class DefaultLayoutComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private alertify: AlertifyService,
-    private router: Router
+    private router: Router,
+    public utility: Utility
   ) {}
   ngOnInit() {
     const jwtTtoken  = localStorage.getItem('token');

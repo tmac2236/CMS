@@ -16,7 +16,7 @@ import { LanguageService } from "../_services/language.service";
 export class Utility {
   baseUrl = environment.apiUrl;
   serverWebRoot =  environment.serverWebRoot;
-  gaurdPassword = environment.gaurdPassword;
+  guardPassword = environment.guardPassword;
   admPassword = environment.admPassword;
   //getUserName
   jwtHelper = new JwtHelperService();
@@ -141,5 +141,10 @@ export class Utility {
     if (file.type != "image/jpeg") isLegal = false;
     if (file.size >= maxVal) isLegal = false; //最大上傳1MB
     return isLegal;
+  }
+  getRole(){
+    const token = localStorage.getItem('token');
+    let role = this.jwtHelper.decodeToken(token)["role"];
+    return role;
   }
 }

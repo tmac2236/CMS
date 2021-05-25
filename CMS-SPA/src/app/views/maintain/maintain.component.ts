@@ -51,6 +51,7 @@ export class MaintainComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Here is  : " + this.utility.getRole());
     if(this.role =='adm'){
       this.getAllCompany();
       this.getAllCar();

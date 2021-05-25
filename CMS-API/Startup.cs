@@ -63,6 +63,7 @@ namespace API
             services.AddScoped<ICMSCarManageRecordDAO, CMSCarManageRecordDAO>();
             services.AddScoped<ICMSCompanyDAO, CMSCompanyDAO>();
             services.AddScoped<ICMSDepartmentDAO, CMSDepartmentDAO>();
+            services.AddScoped<IUserDAO, UserDAO>();
 
             //Service
 

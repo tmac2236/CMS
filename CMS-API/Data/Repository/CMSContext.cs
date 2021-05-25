@@ -14,7 +14,8 @@ namespace API.Data.Repository
         public DbSet<CarManageRecord> CMSCarManageRecord { get; set; }
         public DbSet<Company> CMSCompany { get; set; }
         public DbSet<Department> CMSDepartment { get; set; }
-        
+        public DbSet<User> CMSUser { get; set; }
+
         //DTO(Stored Procedure
         public DbSet<CarManageRecordDto> GetCarManageRecordDto { get; set; }
 
@@ -25,6 +26,7 @@ namespace API.Data.Repository
             modelBuilder.Entity<CarManageRecord>().HasKey(x => new { x.LicenseNumber, x.SignInDate });
             modelBuilder.Entity<Company>().HasKey(x => new { x.Id });
             modelBuilder.Entity<Department>().HasKey(x => new { x.Id });
+            modelBuilder.Entity<User>().HasKey(x => new { x.Account, x.Password });
 
             //DTO(Stored Procedure)
             modelBuilder.Entity<CarManageRecordDto>()

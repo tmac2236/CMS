@@ -98,7 +98,8 @@
                 class="form-control"
                 name="signOutDate"
                 [(ngModel)]="scarManageRecordDto.signOutDate"
-                required>
+                >
+                <option value = "" selected>All</option>
                 <option value = "Y" selected>Y</option>
                 <option value = "N" selected>N</option>
                 </select>
@@ -214,14 +215,6 @@
                                   (click)="this.edit(item)"
                                 />
                               </div>
-                              <div class="mt-2" [hidden]="item.isConfirm == 'Y'">
-                                <img
-                                  src="../assets/systemImg/check.png"
-                                  width="30"
-                                  height="30"
-                                  (click)="this.confirmBtn(item)"
-                                />
-                              </div>
                             </td>
                             <td>{{ item.companyName }}</td>
                             <td>{{ item.plateNumber }}</td>
@@ -258,7 +251,16 @@
 
                             <td>{{ item.carSize }}</td>
                             <td>{{ item.companyDistance }}</td>
-                            <td>{{ item.isConfirm }}</td>
+                            <td>
+                              <div class="mt-2" [hidden]="item.isConfirm == 'Y'">
+                              <img
+                                src="../assets/systemImg/check.png"
+                                width="30"
+                                height="30"
+                                (click)="this.confirmBtn(item)"
+                              />
+                              </div>
+                              {{ item.isConfirm }}</td>
                             <td>{{ item.memo }}</td>
                           </tr>
                         </ng-container>
