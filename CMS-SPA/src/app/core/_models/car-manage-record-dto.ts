@@ -22,9 +22,11 @@ export class CarManageRecordDto implements ModelInterface {
 
   carSize: string;
   companyDistance: string;
-
-  isDisplay: number; //only use in front end
   isConfirm :string;
   memo :string;
+
+  
+
+  isDisplay: number; //only use in front end
   constructor(){}
 }
