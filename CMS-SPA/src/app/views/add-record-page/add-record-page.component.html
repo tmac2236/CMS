@@ -32,6 +32,7 @@
                   type="text"
                   class="form-control"
                   name="driverName"
+                  maxlength="60"
                   [(ngModel)]="model.driverName"
                   required
                 />
@@ -42,6 +43,7 @@
                   type="text"
                   class="form-control"
                   name="licenseNumber"
+                  maxlength="20"
                   [(ngModel)]="model.licenseNumber"
                   (focusout)="getLastRecord()"
                   required
@@ -56,6 +58,7 @@
                   type="text"
                   class="form-control"
                   name="plateNumber"
+                  maxlength="20"
                   [(ngModel)]="model.plateNumber"
                   required
                 />
@@ -76,6 +79,7 @@
                   type="text"
                   class="form-control"
                   name="carTempNumber"
+                  maxlength="20"
                   [(ngModel)]="model.carTempNumber"
                   required
                 />
@@ -86,6 +90,7 @@
                   type="text"
                   class="form-control"
                   name="sealNumber"
+                  maxlength="60"
                   [(ngModel)]="model.sealNumber"
                 />
               </div>                                
@@ -108,6 +113,7 @@
                   type="text"
                   class="form-control"
                   name="contactPerson"
+                  maxlength="60"
                   [(ngModel)]="model.contactPerson"
                   required
                 />
@@ -129,6 +135,7 @@
                   type="text"
                   class="form-control"
                   name="tempNumber"
+                  maxlength="20"
                   [(ngModel)]="model.tempNumber"
                   required
                 />
@@ -142,6 +149,7 @@
                   type="text"
                   class="form-control"
                   name="goodsName"
+                  maxlength="60"
                   [(ngModel)]="model.goodsName"
                 />
               </div>
@@ -151,6 +159,7 @@
                   type="text"
                   class="form-control"
                   name="goodsCount"
+                  maxlength="10"
                   [(ngModel)]="model.goodsCount"
                 />
                 <label>{{ 'Report.noteStr' | translate }}</label>
@@ -161,6 +170,7 @@
                   type="text"
                   class="form-control"
                   name="guardName"
+                  maxlength="60"
                   [(ngModel)]="model.guardName"
                 />
               </div>
@@ -194,6 +204,7 @@
                   type="text"
                   class="form-control"
                   name="memo"
+                  maxlength="60"
                   [(ngModel)]="model.memo"
                 />
               </div>

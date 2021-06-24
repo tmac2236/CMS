@@ -26,6 +26,9 @@ export class CmsService {
   getAllCompany(){
     return this.utility.http.get<Company[]>(this.utility.baseUrl +"CMS/getAllCompany");
   }
+  getAllCarCompanyDepartment(){
+    return this.utility.http.get<object[]>(this.utility.baseUrl +"CMS/getAllCarCompanyDepartment");
+  }
   getTheRecord(model: CarManageRecord){
     return this.utility.http.post<CarManageRecord>(
       this.utility.baseUrl + 'CMS/getTheRecord',

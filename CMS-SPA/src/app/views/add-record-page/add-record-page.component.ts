@@ -48,9 +48,10 @@ export class AddRecordPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllCarList();
-    this.getAllCompany();
-    this.getAllDepartment();
+    //this.getAllCarList();
+    //this.getAllCompany();
+    //this.getAllDepartment();
+    this.getAllCarCompanyDepartment();
   }
 
   signature() {
@@ -123,6 +124,25 @@ export class AddRecordPageComponent implements OnInit {
         );
       }
     );  
+  }
+  getAllCarCompanyDepartment(){
+    this.utility.spinner.show();
+    this.cmsService.getAllCarCompanyDepartment().subscribe(
+      (res) => {
+        this.utility.spinner.hide();
+        this.carList = <Car[]>res[0];
+        this.companyList =<Company[]>res[1];
+        this.departmentList = <Department[]>res[2];
+      },
+      (error) => {
+        this.utility.spinner.hide();
+        this.utility.alertify.confirm(
+          "System Notice",
+          "Syetem is busy, please try later.",
+          () => {}
+        );
+      }
+    );    
   }
   save(){
     if(!this.checkFormValidate("save")) {

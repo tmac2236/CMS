@@ -129,6 +129,20 @@ namespace API.Controllers
             var result = _cMSDepartmentDAO.FindAll().ToList();
             return Ok(result);
         }
+        [HttpGet("getAllCarCompanyDepartment")]
+        public IActionResult GetAllCarCompanyDepartment()
+        {
+            _logger.LogInformation(String.Format(@"******  CMSController GetAllCarCompanyDepartment fired!! ******"));
+            var cars = _cMSCarDAO.FindAll().ToList();
+            var companys = _cMSCompanyDAO.FindAll().ToList();
+            var departments = _cMSDepartmentDAO.FindAll().ToList();
+            List<object> result= new List<object>();
+            result.Add(cars);
+            result.Add(companys);
+            result.Add(departments);
+            
+            return Ok(result);
+        }
         [HttpPost("getTheRecord")]
         public IActionResult GetTheRecord(CarManageRecord carManageRecord)
         {

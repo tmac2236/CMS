@@ -53,9 +53,10 @@ export class MaintainComponent implements OnInit {
   ngOnInit() {
     //console.log("Here is  : " + this.utility.getRole());
     if(this.role =='adm'){
-      this.getAllCompany();
-      this.getAllCar();
-      this.getAllDepartment();
+      //this.getAllCompany();
+      //this.getAllCar();
+      //this.getAllDepartment();
+      this.getAllCarCompanyDepartment();
     }
   }
   getAllCar() {
@@ -138,7 +139,60 @@ export class MaintainComponent implements OnInit {
       }
     );
   }
-  
+  getAllCarCompanyDepartment(){
+    this.utility.spinner.show();
+    this.cmsService.getAllCarCompanyDepartment().subscribe(
+      (res) => {
+        this.utility.spinner.hide();
+        ///////////////Cars/////////////
+        this.carFormGroup = this.fb.group({
+          cars: this.fb.array([]),
+        });
+        let resCars = <Car[]>res[0];
+        resCars.map((x) => {
+          this.cars = this.getCarForm;
+          this.cars.push(this.createCar(x.id, x.carSize));
+        });
+        ///////////Companys///////////
+        this.companyFormGroup = this.fb.group({
+          companys: this.fb.array([]),
+        });
+        let resCompanys = <Company[]>res[1];
+        resCompanys.map((x) => {
+          //check is need warn
+          if( new Date(x.createDate).getTime() > 
+            new Date(this.deadlineNow).getTime()
+          ){
+            x.isWarn = true;
+          }else{
+            x.isWarn = false;
+          }
+          this.companys = this.getCompanyForm;
+          this.companys.push(
+            this.createCompany(x.id, x.companyName, x.companyDistance,x.createDate,x.isWarn)
+          );
+        });
+        ///////////Department///////////
+        this.departmentFormGroup = this.fb.group({
+          departments: this.fb.array([]),
+        });
+        let resDepartments = <Department[]>res[2];
+        resDepartments.map((x) => {
+          this.departments = this.getDepartmentForm;
+          this.departments.push(this.createDepartment(x.id, x.departmentName));
+        });
+
+      },
+      (error) => {
+        this.utility.spinner.hide();
+        this.utility.alertify.confirm(
+          "System Notice",
+          "Syetem is busy, please try later.",
+          () => {}
+        );
+      }
+    );    
+  }
   ////// Company Form control ///////
   get getCompanyForm(): FormArray {
     return this.companyFormGroup.get("companys") as FormArray;

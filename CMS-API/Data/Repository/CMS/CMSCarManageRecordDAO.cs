@@ -20,18 +20,18 @@ namespace API.Data.Repository.CMS
         public async Task<List<CarManageRecordDto>> GetCarManageRecordDto(SCarManageRecordDto sCarManageRecordDto)
         {
 
-            string strWhere = " WHERE SignInDate between '" + sCarManageRecordDto.SignInDateS + "' and '" + sCarManageRecordDto.SignInDateE + "' ";
-            if (!(sCarManageRecordDto.LicenseNumber == "" || sCarManageRecordDto.LicenseNumber == null))
+            string strWhere = " WHERE SignInDate between '" + sCarManageRecordDto.SignInDateS + "' And '" + sCarManageRecordDto.SignInDateE + "' ";
+            if (!(String.IsNullOrEmpty(sCarManageRecordDto.LicenseNumber)))
                 strWhere += " AND LicenseNumber = '" + sCarManageRecordDto.LicenseNumber.Trim() + "' ";
-            if (!(sCarManageRecordDto.CompanyId != "" || sCarManageRecordDto.CompanyId != null))
+            if (!(String.IsNullOrEmpty(sCarManageRecordDto.CompanyId)))
                 strWhere += " AND CompanyId = " + sCarManageRecordDto.CompanyId;
-            if (!(sCarManageRecordDto.DriverName != "" || sCarManageRecordDto.DriverName != null))
+            if (!(String.IsNullOrEmpty(sCarManageRecordDto.DriverName)))
                 strWhere += " AND DriverName = '" + sCarManageRecordDto.DriverName.Trim() + "' ";
-            if (!(sCarManageRecordDto.SignInReason != "" || sCarManageRecordDto.SignInReason != null))
+            if (!(String.IsNullOrEmpty(sCarManageRecordDto.SignInReason)))
                 strWhere += " AND SignInReason = '" + sCarManageRecordDto.SignInReason.Trim() + "' ";
-            if (!(sCarManageRecordDto.DepartmentId != "" || sCarManageRecordDto.DepartmentId != null))
+            if (!(String.IsNullOrEmpty(sCarManageRecordDto.DepartmentId)))
                 strWhere += " AND DepartmentId = " + sCarManageRecordDto.DepartmentId;
-            if (!(sCarManageRecordDto.ContactPerson != "" || sCarManageRecordDto.ContactPerson != null))
+            if (!(String.IsNullOrEmpty(sCarManageRecordDto.ContactPerson)))
                 strWhere += " AND ContactPerson = '" + sCarManageRecordDto.ContactPerson.Trim() + "' ";
             if (sCarManageRecordDto.SignOutDate == "Y"){
                 strWhere += " AND SignOutDate is not null " ;
