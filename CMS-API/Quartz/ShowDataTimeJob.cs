@@ -25,10 +25,9 @@ namespace API.Quartz
                 // 解析你的作用域服務
                 //var authService = scope.ServiceProvider.GetService<IAuthService>();
                 //var ss = authService.GetById(4);
-                _logger.LogError("Hello ~~~!@@~~");
+                _logger.LogInformation("Hello ~~~!@@~~");
             }
-
-            _logger.LogError("ShowDataTimeJob was fired!!!!!");
+            _logger.LogInformation(String.Format(@"****** ShowDataTimeJob Execute fired!! ******"));
 
             return Task.CompletedTask;
         }

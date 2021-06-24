@@ -10,21 +10,22 @@ using System.IdentityModel.Tokens.Jwt;
 using API.DTOs;
 using Microsoft.AspNetCore.Hosting;
 using API.Data.Interface.CMS;
+using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
     public class AuthController : ApiController
     {
         private readonly IUserDAO _userDAO;
-        public AuthController(IConfiguration config, IWebHostEnvironment webHostEnvironment, IUserDAO userDAO)
-                 : base(config, webHostEnvironment)
+        public AuthController(IConfiguration config, IWebHostEnvironment webHostEnvironment, ILogger<AuthController> logger, IUserDAO userDAO)
+                 : base(config, webHostEnvironment,logger)
         {
             _userDAO = userDAO;
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserDto userForLoginDto)
+        public IActionResult Login(UserDto userForLoginDto)
         {
-
+            _logger.LogInformation(String.Format(@"******  AuthController Login fired!! ******"));
             var theModel = _userDAO
                     .FindSingle(x => x.Account == userForLoginDto.Account && x.Password == userForLoginDto.Password);
 

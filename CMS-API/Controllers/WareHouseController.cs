@@ -11,6 +11,7 @@ using System.Linq;
 using API.Data.Interface.CMS;
 using API.Data.Interface.DKS;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
@@ -19,8 +20,8 @@ namespace API.Controllers
         private readonly IWarehouseDAO _warehouseDao;
         private readonly ISamPartBDAO _samPartBDAO;
         private readonly ICMSCarDAO _cMSCarDAO;
-        public WareHouseController(IConfiguration config, IWebHostEnvironment webHostEnvironment, IWarehouseDAO warehouseDao, ISamPartBDAO samPartBDAO, ICMSCarDAO cMSCarDAO)
-                 : base(config, webHostEnvironment)
+        public WareHouseController(IConfiguration config, IWebHostEnvironment webHostEnvironment, ILogger<WareHouseController> logger, IWarehouseDAO warehouseDao, ISamPartBDAO samPartBDAO, ICMSCarDAO cMSCarDAO)
+                 : base(config, webHostEnvironment,logger)
         {
             _warehouseDao = warehouseDao;
             _samPartBDAO = samPartBDAO;

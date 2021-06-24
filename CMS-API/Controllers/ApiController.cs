@@ -9,21 +9,25 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [TypeFilter(typeof(ApiActionFilter))]
     [TypeFilter(typeof(ApiExceptionFilter))]
     public class ApiController : ControllerBase
     {
         protected readonly IConfiguration _config;
         protected readonly IWebHostEnvironment _webHostEnvironment;
+        protected ILogger<ApiController> _logger;
         //constructor
-        public ApiController(IConfiguration config, IWebHostEnvironment webHostEnvironment)
+        public ApiController(IConfiguration config, IWebHostEnvironment webHostEnvironment,ILogger<ApiController> logger)
         {
             _config = config;
             _webHostEnvironment = webHostEnvironment;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         protected byte[] CommonExportReport(object data, string templateName)
         {
@@ -60,7 +64,7 @@ namespace API.Controllers
 
             return stream.ToArray(); ;
         }
-         //儲存檔案到Server
+        //儲存檔案到Server
         //file:檔案 
         //settingNam: root資料夾名稱
         //fileName: 檔案名稱

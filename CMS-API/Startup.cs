@@ -92,8 +92,9 @@ namespace API
                         ValidateAudience = false
                     };
                 });
-            //log
+            //AOP
             services.AddScoped<ApiExceptionFilter>();
+            services.AddScoped<ApiActionFilter>();
 
         }
 
