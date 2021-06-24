@@ -10,6 +10,7 @@ import { MacroComponent } from './macro/macro.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { WebcamModule } from 'ngx-webcam';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     ExcelRoutingModule,
+    WebcamModule,
   ],
   declarations: [CompareComponent, MacroComponent],
 })

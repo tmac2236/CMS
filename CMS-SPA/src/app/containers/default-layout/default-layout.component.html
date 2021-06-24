@@ -3,8 +3,8 @@
   [fixed]="true"
   [navbarBrandFull]="{
     src: 'assets/img/brand/favicon.ico',
-    width: 89,
-    height: 25,
+    width: 50,
+    height: 50,
     alt: 'SSB Logo'
   }"
   [navbarBrandMinimized]="{
@@ -32,7 +32,7 @@
   <app-sidebar
     #appSidebar
     [fixed]="true"
-    [display]="'lg'"
+    [display]="false"
     [minimized]="sidebarMinimized"
     (minimizedChange)="toggleMinimize($event)"
   >
