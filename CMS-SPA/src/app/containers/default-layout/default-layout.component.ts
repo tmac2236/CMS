@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from "../../../environments/environment";
 import { Utility } from "../../core/utility/utility";
 import { User } from '../../core/_models/user';
 import { AlertifyService } from "../../core/_services/alertify.service";
@@ -10,12 +11,17 @@ import { navItems } from "../../_nav";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./default-layout.component.html",
+  styleUrls: ['./default-layout.component.scss']
 })
 export class DefaultLayoutComponent implements OnInit {
+  projectName = environment.projectName;
   public sidebarMinimized = false;
   public navItems = navItems;
   user: string;
   jwtHelper = new JwtHelperService();
+  color:string ="";
+  version:string ="";
+  updateTime:string ="";
 
   constructor(
     public authService: AuthService,
@@ -24,9 +30,10 @@ export class DefaultLayoutComponent implements OnInit {
     public utility: Utility
   ) {}
   ngOnInit() {
-    const jwtTtoken  = localStorage.getItem('token');
-    //console.log(this.jwtHelper.decodeToken(jwtTtoken));
-    this.user = this.jwtHelper.decodeToken(jwtTtoken)['unique_name'];
+    const theToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
+    this.user = theToken['nameid'];
+    this.version = theToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/version'];
+    this.updateTime = theToken['birthdate'];
   }
   toggleMinimize(e) {
     this.sidebarMinimized = e;
@@ -37,7 +44,4 @@ export class DefaultLayoutComponent implements OnInit {
     this.router.navigate([""]);
   }
 
-  loggedIn() {
-    return this.authService.loggedIn();
-  }
 }

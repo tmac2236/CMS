@@ -33,11 +33,15 @@ namespace API.Controllers
             {
                 return Unauthorized();
             }
+            var version = _config.GetSection("AppSettings:Version").Value;
+            var updateTime = _config.GetSection("AppSettings:UpdateTime").Value;
 
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, theModel.Account),
-                new Claim(ClaimTypes.Role, theModel.Role)
+                new Claim(ClaimTypes.Role, theModel.Role),
+                new Claim(ClaimTypes.Version, version),
+                new Claim(ClaimTypes.DateOfBirth, updateTime)
                 };
             var tokenName = _config.GetSection("AppSettings:Token").Value;
             var key = new SymmetricSecurityKey(Encoding.UTF8

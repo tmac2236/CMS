@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { BsDropdownConfig } from "ngx-bootstrap/dropdown";
 import { NgxSpinnerService } from "ngx-spinner";
+import { environment } from "../../../environments/environment";
 import { AlertifyService } from "../../core/_services/alertify.service";
 import { AuthService } from "../../core/_services/auth.service";
 
@@ -17,10 +19,12 @@ import { AuthService } from "../../core/_services/auth.service";
   ],
 })
 export class HomePageComponent implements OnInit {
+  projectName = environment.projectName;
   loginModel: any = {};
   photoUrl: string;
   param1: string;
   param2: string;
+  jwtHelper = new JwtHelperService();
 
   constructor(
     public authService: AuthService,
@@ -38,9 +42,18 @@ export class HomePageComponent implements OnInit {
     this.spinner.show();
     this.authService.login(this.loginModel).subscribe(
       (next) => {
+        let role = this.jwtHelper.decodeToken(localStorage.getItem('token'))["role"];
         this.spinner.hide();
         this.alertify.success("Logined in sucessed");
-        //this.router.navigate(["excel/compare"]);
+        if(role =="ADM"){
+          this.router.navigate(["/Report"]);
+        }else if (role =="GA"){
+          this.router.navigate(["/Report"]);
+        }else if (role =="GUARD"){
+          this.router.navigate(["/AddRecordPage"]);
+        }
+
+      
       },
       (error) => {
         this.spinner.hide();

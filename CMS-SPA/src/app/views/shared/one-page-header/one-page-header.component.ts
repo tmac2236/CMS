@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { Utility } from "../../../core/utility/utility";
 import { ModalDirective } from "ngx-bootstrap/modal";
-
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: "app-one-page-header",
   templateUrl: "./one-page-header.component.html",
@@ -11,6 +11,7 @@ import { ModalDirective } from "ngx-bootstrap/modal";
 export class OnePageHeaderComponent {
 
   @ViewChild('infoModal') public infoModal: ModalDirective;
+  projectName = environment.projectName;
   keyPassword: string;
   constructor(private route: Router, public utility: Utility) {}
   modalName: string;

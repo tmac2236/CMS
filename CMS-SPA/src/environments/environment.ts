@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  projectName: "Car Management System",
   apiUrl: "http://localhost:5000/api/",
   serverWebRoot: "http://localhost:4200/#/",
 

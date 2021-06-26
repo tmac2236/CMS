@@ -4,17 +4,17 @@ export const navItems: INavData[] = [
   {
     name: 'AddRecordPage',
     url: '/AddRecordPage',
-    icon: 'icon-puzzle',
+    icon: 'fa fa-balance-scale',
   },
   {
     name: 'Report',
     url: '/Report',
-    icon: 'icon-puzzle',
+    icon: 'fa fa-newspaper-o',
   },
   {
     name: 'Maintain',
     url: '/Maintain',
-    icon: 'icon-puzzle',
+    icon: 'fa fa-cogs',
   },
   /*
   {
