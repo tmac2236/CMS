@@ -3,10 +3,9 @@ import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from "../../../environments/environment";
 import { Utility } from "../../core/utility/utility";
-import { User } from '../../core/_models/user';
 import { AlertifyService } from "../../core/_services/alertify.service";
 import { AuthService } from "../../core/_services/auth.service";
-import { navItems } from "../../_nav";
+import { NavItem } from "../../_nav";
 
 @Component({
   selector: "app-dashboard",
@@ -16,7 +15,7 @@ import { navItems } from "../../_nav";
 export class DefaultLayoutComponent implements OnInit {
   projectName = environment.projectName;
   public sidebarMinimized = false;
-  public navItems = navItems;
+  public navItems = [];
   user: string;
   jwtHelper = new JwtHelperService();
   color:string ="";
@@ -24,11 +23,14 @@ export class DefaultLayoutComponent implements OnInit {
   updateTime:string ="";
 
   constructor(
+    private nav: NavItem,
     public authService: AuthService,
     private alertify: AlertifyService,
     private router: Router,
     public utility: Utility
-  ) {}
+  ) {
+    this.navItems = this.nav.getNav();
+  }
   ngOnInit() {
     const theToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
     this.user = theToken['nameid'];

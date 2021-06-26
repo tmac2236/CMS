@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { JwtHelperService } from "@auth0/angular-jwt";
 import { BsDropdownConfig } from "ngx-bootstrap/dropdown";
 import { NgxSpinnerService } from "ngx-spinner";
 import { environment } from "../../../environments/environment";
@@ -24,7 +23,6 @@ export class HomePageComponent implements OnInit {
   photoUrl: string;
   param1: string;
   param2: string;
-  jwtHelper = new JwtHelperService();
 
   constructor(
     public authService: AuthService,
@@ -42,7 +40,7 @@ export class HomePageComponent implements OnInit {
     this.spinner.show();
     this.authService.login(this.loginModel).subscribe(
       (next) => {
-        let role = this.jwtHelper.decodeToken(localStorage.getItem('token'))["role"];
+        let role = this.authService.getUserRole();
         this.spinner.hide();
         this.alertify.success("Logined in sucessed");
         if(role =="ADM"){
