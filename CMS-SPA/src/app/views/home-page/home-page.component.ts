@@ -44,14 +44,12 @@ export class HomePageComponent implements OnInit {
         this.spinner.hide();
         this.alertify.success("Logined in sucessed");
         if(role =="ADM"){
-          this.router.navigate(["/Report"]);
+          this.router.navigate(["/Report/Report"]);
         }else if (role =="GA"){
-          this.router.navigate(["/Report"]);
+          this.router.navigate(["/Report/Report"]);
         }else if (role =="GUARD"){
-          this.router.navigate(["/AddRecordPage"]);
+          this.router.navigate(["/Transaction/AddRecordPage"]);
         }
-
-      
       },
       (error) => {
         this.spinner.hide();

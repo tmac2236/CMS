@@ -57,11 +57,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { DataTablesModule } from "angular-datatables";
 import { PaginationModule } from "ngx-bootstrap/pagination";
-import { OnePageHeaderComponent } from "./views/shared/one-page-header/one-page-header.component";
-import { AddRecordPageComponent } from "./views/add-record-page/add-record-page.component";
 import { SignaturePadComponent } from "./views/shared/signature-pad/signature-pad.component";
-import { ReportComponent } from "./views/report/report.component";
-import { MaintainComponent } from "./views/maintain/maintain.component";
 import { TestComponent } from "./views/test/test.component";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { NgSelectModule } from "@ng-select/ng-select";
@@ -76,7 +72,7 @@ export function createTranslateLoader(http: HttpClient) {
     NgxSpinnerModule,
     BrowserModule,
     HttpClientModule,
-    NgSelectModule,
+    NgSelectModule,   // ng-select
     TranslateModule.forRoot({
       // I18N
       loader: {
@@ -114,11 +110,7 @@ export function createTranslateLoader(http: HttpClient) {
     F428Component,
     F428EditComponent,
     HomePageComponent,
-    OnePageHeaderComponent,
-    AddRecordPageComponent,
     SignaturePadComponent, //E-Sign
-    ReportComponent,
-    MaintainComponent,
     TestComponent,
   ],
   providers: [

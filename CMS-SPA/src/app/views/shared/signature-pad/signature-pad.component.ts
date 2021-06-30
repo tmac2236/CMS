@@ -121,7 +121,7 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
     }
   }
   toEdit(){
-    var navigateTo = "/EditRecordPage";
+    var navigateTo = "/Transaction/AddRecordPage";
     var navigationExtras = {
       queryParams: {
         signInDate: this.urlParam.signInDate,

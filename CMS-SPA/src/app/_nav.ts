@@ -27,7 +27,7 @@ export class NavItem {
     //children
     const navMaintain_Maintain = {
       name: '1.1 Maintain',
-      url: '/Maintain',
+      url: '/Maintain/Maintain',
       class: 'menu-margin',
     };
 
@@ -52,7 +52,7 @@ export class NavItem {
     //children
     const navTransaction_AddRecordPage = {
       name: '2.1 AddRecord',
-      url: '/AddRecordPage',
+      url: '/Transaction/AddRecordPage',
       class: 'menu-margin',
     };
 
@@ -77,7 +77,7 @@ export class NavItem {
     //children
     const navReport_Report = {
       name: '4.1 Report',
-      url: '/Report',
+      url: '/Report/Report',
       class: 'menu-margin',
     };
 

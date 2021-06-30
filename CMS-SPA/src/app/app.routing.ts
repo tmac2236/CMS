@@ -31,43 +31,11 @@ export const routes: Routes = [
     component: P500Component,
   },
   {
-    path: "AddRecordPage",
-    //canActivate: [AuthGuardRole],
-    component: AddRecordPageComponent,
-    data: {
-      roles: ['GUARD','GA'],
-    },
-  },
-  {
-    path: "EditRecordPage",
-    //canActivate: [AuthGuardRole],
-    component: AddRecordPageComponent,
-    data: {
-      roles: ['GUARD','GA'],
-    },
-  },
-  {
     path: "ESignature",
     //canActivate: [AuthGuardRole],
     component: SignaturePadComponent,
     data: {
       roles: ['GUARD','GA'],
-    },
-  },
-  {
-    path: "Report",
-    //canActivate: [AuthGuardRole],
-    component: ReportComponent,
-    data: {
-      roles: ['ADM','GUARD','GA'],
-    },
-  },
-  {
-    path: "Maintain",
-    //canActivate: [AuthGuardRole],
-    component: MaintainComponent,
-    data: {
-      roles: ['ADM','GUARD','GA'],
     },
   },
   {
@@ -85,7 +53,22 @@ export const routes: Routes = [
         path: "excel",
         loadChildren: () =>
           import("./views/excel/excel.module").then((m) => m.ExcelModule),
-      }
+      },
+      {
+        path: "Maintain",
+        loadChildren: () =>
+          import("./views/maintain/maintain.module").then((m) => m.MaintainModule),
+      },
+      {
+        path: "Report",
+        loadChildren: () =>
+          import("./views/report/report.module").then((m) => m.ReportModule),
+      },
+      {
+        path: "Transaction",
+        loadChildren: () =>
+          import("./views/add-record-page/transaction.module").then((m) => m.TransactionModule),
+      },
     ],
   },
   { path: "**", component: P404Component },

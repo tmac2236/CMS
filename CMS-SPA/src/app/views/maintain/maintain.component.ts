@@ -36,7 +36,7 @@ export class MaintainComponent implements OnInit {
     private route: Router,
   ) {
     this.activeRouter.queryParams.subscribe((params) => {
-      this.role = params.role;
+      //this.role = params.role;
     });
 
     this.companyFormGroup = this.fb.group({
@@ -51,8 +51,10 @@ export class MaintainComponent implements OnInit {
   }
 
   ngOnInit() {
-    //console.log("Here is  : " + this.utility.getRole());
-    if(this.role =='adm'){
+    this.role = this.utility.getRole();
+    console.log("Here is  : " + this.role);
+    //debugger;
+    if(this.role =='ADM'){
       //this.getAllCompany();
       //this.getAllCar();
       //this.getAllDepartment();

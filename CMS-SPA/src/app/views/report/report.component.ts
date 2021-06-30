@@ -37,7 +37,7 @@ export class ReportComponent implements OnInit {
   }
 
   edit(model: CarManageRecordDto) {
-    var navigateTo = "/EditRecordPage";
+    var navigateTo = "/Transaction/AddRecordPage";
     var navigationExtras = {
       queryParams: {
         signInDate: model.signInDate,
