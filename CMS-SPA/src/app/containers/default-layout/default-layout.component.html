@@ -47,7 +47,7 @@
   <app-sidebar
     #appSidebar
     [fixed]="true"
-    [display]="false"
+    [display]="'lg'"
     [minimized]="sidebarMinimized"
     (minimizedChange)="toggleMinimize($event)"
   >
@@ -64,7 +64,7 @@
      <cui-breadcrumb> 
     <!-- Breadcrumb Menu cannot delete this is page tile -->
      </cui-breadcrumb>
-    <div class="container-fluid">
+    <div class="container-fluid pt-30">
       <router-outlet></router-outlet>
     </div>
   </main>
@@ -72,6 +72,6 @@
 <app-footer>
   <span><a>Copyright © 2021 SHYANG SHIN BAO INDUSTRIAL CO., LTD All Right reserved</a></span>
   <span class="ml-auto"
-    >Powered by <a href="assets/img/brand/favicon.ico">IT-Stan </a></span
+    >Powered by <a href="">IT-Stan </a></span
   >
 </app-footer>
