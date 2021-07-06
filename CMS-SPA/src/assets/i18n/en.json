@@ -20,8 +20,8 @@
     "Report": {
         "title": "Report",
         "inOutList": {
-                "import":"Import",
-                "export":"Export"
+                "import":"Nhập Hàng(Import)",
+                "export":"Xuất Hàng(Export)"
         },
         "noteStr":"*Note: Ghi thêm đơn vị (VD: 1 tấn, 20 kiện, 30 kg...)",
         "titleList":{

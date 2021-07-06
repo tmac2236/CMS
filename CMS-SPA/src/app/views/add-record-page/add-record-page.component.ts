@@ -58,7 +58,7 @@ export class AddRecordPageComponent implements OnInit {
     if(!this.checkFormValidate("signOut")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
-        "Please select Company、Department、Car、Goods Name、Good Count、Guard Name !",
+        "Please select Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
     }
@@ -173,7 +173,7 @@ export class AddRecordPageComponent implements OnInit {
     if(!this.checkFormValidate("edit")) {
       this.utility.alertify.confirm(
         "Sweet Alert",
-        "Please select Company、Department、Car、Goods Name、Good Count、Guard Name !",
+        "Please select Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
     }

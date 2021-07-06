@@ -57,7 +57,8 @@ export class NavItem {
     };
 
     //children -> father
-    if (this.theUserRoles.includes("GUARD")) {
+    if (this.theUserRoles.includes("ADM") || this.theUserRoles.includes("GA")|| this.theUserRoles.includes("GUARD")
+    ) {
       navTransaction.children.push(navTransaction_AddRecordPage);
     }
 

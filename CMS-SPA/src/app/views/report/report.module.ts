@@ -13,6 +13,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ReportComponent } from './report.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     TabsModule,
     NgSelectModule,   // ng-select
     PaginationModule, //use for sheet
+    TooltipModule,
   ],
   declarations: [ReportComponent],
 })

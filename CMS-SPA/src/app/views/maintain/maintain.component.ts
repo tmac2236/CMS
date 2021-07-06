@@ -216,7 +216,7 @@ export class MaintainComponent implements OnInit {
   }
   addEmptyCompany(): void {    
     this.companys = this.getCompanyForm;
-    this.companys.push(this.createCompany());
+    this.companys.insert(0,this.createCompany());
   }
   //i: index of the list
   removeCompany(i: number) {
@@ -276,7 +276,7 @@ export class MaintainComponent implements OnInit {
   }
   addEmptyCar(): void {
     this.cars = this.getCarForm;
-    this.cars.push(this.createCar());
+    this.cars.insert(0,this.createCar());
   }
   //i: index of the list
   removeCar(i: number) {
@@ -334,7 +334,7 @@ export class MaintainComponent implements OnInit {
   }
   addEmptyDepartment(): void {
     this.departments = this.getDepartmentForm;
-    this.departments.push(this.createDepartment());
+    this.departments.insert(0,this.createDepartment());
   }
   //i: index of the list
   removeDepartment(i: number) {

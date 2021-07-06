@@ -26,13 +26,13 @@ namespace API.Data.Repository.CMS
             if (!(String.IsNullOrEmpty(sCarManageRecordDto.CompanyId)))
                 strWhere += " AND CompanyId = " + sCarManageRecordDto.CompanyId;
             if (!(String.IsNullOrEmpty(sCarManageRecordDto.DriverName)))
-                strWhere += " AND DriverName = '" + sCarManageRecordDto.DriverName.Trim() + "' ";
+                strWhere += " AND DriverName = N'" + sCarManageRecordDto.DriverName.Trim() + "' ";
             if (!(String.IsNullOrEmpty(sCarManageRecordDto.SignInReason)))
-                strWhere += " AND SignInReason = '" + sCarManageRecordDto.SignInReason.Trim() + "' ";
+                strWhere += " AND SignInReason = N'" + sCarManageRecordDto.SignInReason.Trim() + "' ";
             if (!(String.IsNullOrEmpty(sCarManageRecordDto.DepartmentId)))
                 strWhere += " AND DepartmentId = " + sCarManageRecordDto.DepartmentId;
             if (!(String.IsNullOrEmpty(sCarManageRecordDto.ContactPerson)))
-                strWhere += " AND ContactPerson = '" + sCarManageRecordDto.ContactPerson.Trim() + "' ";
+                strWhere += " AND ContactPerson = N'" + sCarManageRecordDto.ContactPerson.Trim() + "' ";
             if (sCarManageRecordDto.SignOutDate == "Y"){
                 strWhere += " AND SignOutDate is not null " ;
             }else if(sCarManageRecordDto.SignOutDate == "N"){
@@ -41,30 +41,30 @@ namespace API.Data.Repository.CMS
                 
             string strSQL = string.Format(@"
                                             SELECT 
-                                            	   CP.CompanyName	  AS	CompanyName
-                                                  ,PlateNumber		  AS	PlateNumber
-                                                  ,DriverName		  AS	DriverName
-                                                  ,LicenseNumber	  AS	LicenseNumber
-                                                  ,SignInDate		  AS	SignInDate
+                                            	   CP.CompanyName	        AS	CompanyName
+                                                  ,PlateNumber		        AS	PlateNumber
+                                                  ,DriverName		        AS	DriverName
+                                                  ,LicenseNumber	        AS	LicenseNumber
+                                                  ,SignInDate		        AS	SignInDate
                                             
-                                                  ,TempNumber		  AS	TempNumber
-                                                  ,CarTempNumber      AS	CarTempNumber
-                                                  ,SignInReason		  AS	SignInReason
-                                                  ,GoodsName		  AS	GoodsName
-                                                  ,GoodsCount		  AS	GoodsCount
-                                                  ,DPM.DepartmentName AS 	DepartmentName
+                                                  ,TempNumber		        AS	TempNumber
+                                                  ,CarTempNumber            AS	CarTempNumber
+                                                  ,SignInReason		        AS	SignInReason
+                                                  ,GoodsName		        AS	GoodsName
+                                                  ,GoodsCount		        AS	GoodsCount
+                                                  ,DPM.DepartmentName       AS 	DepartmentName
                                             
-                                                  ,ContactPerson	  AS	ContactPerson
-                                                  ,SealNumber		  AS	SealNumber
-                                                  ,DriverSign		  AS	DriverSign
-                                                  ,SignOutDate		  AS	SignOutDate
-                                                  ,GuardName	      AS	GuardName
+                                                  ,ContactPerson	        AS	ContactPerson
+                                                  ,SealNumber		        AS	SealNumber
+                                                  ,ISNULL(DriverSign,'')    AS	DriverSign
+                                                  ,SignOutDate		        AS	SignOutDate
+                                                  ,GuardName	            AS	GuardName
                                             
-                                                  ,C.CarSize		  AS	CarSize
-                                            	  ,CP.CompanyDistance AS	CompanyDistance
-                                                  ,0                  AS    isDisplay
-                                                  ,IsConfirm          AS    IsConfirm
-                                                  ,Memo               AS    Memo
+                                                  ,C.CarSize		        AS	CarSize
+                                            	  ,CP.CompanyDistance       AS	CompanyDistance
+                                                  ,0                        AS    isDisplay
+                                                  ,IsConfirm                AS    IsConfirm
+                                                  ,Memo                     AS    Memo
                                             
                                               FROM CMSCarManageRecord AS	CMR
                                               left join CMSCompany AS CP on CP.Id = CMR.CompanyId

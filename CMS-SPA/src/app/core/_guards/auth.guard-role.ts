@@ -27,7 +27,7 @@ export class AuthGuardRole implements CanActivate {
       }
     }
     this.alertify.error("This account didn't have the auth !!!");
-    this.router.navigate([""]); // redirect to login in
+    //this.router.navigate([""]); // redirect to login in
     return false;
   }
 }

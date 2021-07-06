@@ -30,8 +30,14 @@ export class ReportComponent implements OnInit {
   departmentList: Department[] = [];
 
   ngOnInit() {
-    this.scarManageRecordDto.signInDateS = this.utility.datepiper.transform(new Date(), 'yyyy-MM-dd');
-    this.scarManageRecordDto.signInDateE = this.utility.datepiper.transform(new Date(), 'yyyy-MM-dd');
+    this.scarManageRecordDto.signInDateS = this.utility.datepiper.transform(
+      new Date(),
+      "yyyy-MM-dd"
+    );
+    this.scarManageRecordDto.signInDateE = this.utility.datepiper.transform(
+      new Date(),
+      "yyyy-MM-dd"
+    );
     this.getAllCompany();
     this.getAllDepartment();
   }
@@ -57,7 +63,7 @@ export class ReportComponent implements OnInit {
           if (
             new Date(model.signInDate).getTime() <
               new Date(this.deadlineNow).getTime() &&
-            model.signOutDate  //已出廠的才需要控管
+            model.signOutDate //已出廠的才需要控管
           ) {
             model.isDisplay = UrlParamEnum.NoNumber;
           } else {
@@ -143,22 +149,28 @@ export class ReportComponent implements OnInit {
   }
   confirmBtn(model: CarManageRecordDto) {
     this.utility.spinner.show();
-    model.isConfirm = 'Y';
-    
+    model.isConfirm = "Y";
+
     this.cmsService.confirmRecord(model).subscribe(
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
           "Sweet Alert",
           "Confirm Success !",
-          () => {});  
+          () => {}
+        );
       },
       (error) => {
         this.utility.spinner.hide();
         this.utility.alertify.error(error);
       }
     );
-    
   }
-
+  viewPic(driverSign: string) {
+    let dataUrl = "../assets/ReportPics/" + driverSign;
+    window.open(dataUrl);
+  }
+  clearCondition() {
+    this.scarManageRecordDto = new SCarManageRecordDto();
+  }
 }

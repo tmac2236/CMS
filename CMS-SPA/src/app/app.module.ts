@@ -94,7 +94,6 @@ export function createTranslateLoader(http: HttpClient) {
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(), //ngx-bootsrap
     TabsModule.forRoot(), //ngx-bootsrap Tab 頁面用
-    TooltipModule.forRoot(), //ngx-bootsrap
     ChartsModule,
     NgImageSliderModule,
     TooltipModule.forRoot(), //table tr td 用

@@ -5,9 +5,12 @@
         <div class="card-body">
           <tabset>
             <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.company' | translate }}" id="tab1">
-            
-              <form [formGroup]="companyFormGroup" class="container mt-3" (ngSubmit)="submitCompanyList()">
-                <div class="row justify-content-center">
+              <form [formGroup]="companyFormGroup" class="container mt-3 " (ngSubmit)="submitCompanyList()">
+                <div class="row justify-content-left">
+                  <div class="col-12">
+                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCompany()">{{ 'Maintain.add' | translate }} {{ 'Maintain.company' | translate }}</button>
+                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/> 
+                  </div>
                   <div class="col-12">
                     <section class="container border mb-4 p-3" formArrayName="companys" 
                       *ngFor="let company of getCompanyForm.controls; let i = index;">
@@ -48,8 +51,8 @@
                         </div>
                       </div>
                     </section> 
-                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCompany()">{{ 'Maintain.add' | translate }} {{ 'Maintain.company' | translate }}</button>
-                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>              
+                    
+                    
                   </div>
                 </div>
               </form>  
@@ -58,7 +61,11 @@
 
             <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.car' | translate }}">
               <form [formGroup]="carFormGroup" class="container mt-3" (ngSubmit)="submitCarList()">
-                <div class="row justify-content-center">
+                <div class="col-12">
+                  <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCar()">{{ 'Maintain.add' | translate }} {{ 'Maintain.car' | translate }}</button>
+                  <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>  
+                </div>
+                <div class="row justify-content-left">
                   <div class="col-6">
                     <section class="container border mb-4 p-3" formArrayName="cars" 
                       *ngFor="let car of getCarForm.controls; let i = index;">
@@ -69,7 +76,7 @@
                           <div class="col-2">
                               <div class="form-group">
                                   <label>Id</label>
-                                  <input type="text" [ngClass]="{'bg-warning': car.dirty }" class="form-control" formControlName="id" readonly/>
+                                  <input type="text" [ngClass]="{'bg-warning': car.dirty }" class="form-control" formControlName="id" [readonly]="true"/>
                               </div>
                           </div>
                           <div class="col-8">
@@ -79,7 +86,7 @@
                               </div>
                           </div>
                           
-                          <div class="col-1" *ngIf="!this.car.value.id" >
+                          <div class="col-2" *ngIf="!this.car.value.id" >
                             <label>&nbsp;</label>
                             <button type="button" class="btn btn-danger float-right mt-8" (click)="removeCar(i)">Cancel</button>
                           </div>
@@ -87,8 +94,7 @@
                         </div>
                       </div>
                     </section> 
-                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCar()">{{ 'Maintain.add' | translate }} {{ 'Maintain.car' | translate }}</button>
-                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>              
+           
                   </div>
                 </div>
               </form>             
@@ -96,7 +102,11 @@
 
             <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.department' | translate }}">
               <form [formGroup]="departmentFormGroup" class="container mt-3" (ngSubmit)="submitDepartmentList()">
-                <div class="row justify-content-center">
+                <div class="row justify-content-left">
+                  <div class="col-12">
+                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyDepartment()">{{ 'Maintain.add' | translate }} {{ 'Maintain.department' | translate }}</button>
+                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>  
+                  </div>
                   <div class="col-6">
                     <section class="container border mb-4 p-3" formArrayName="departments" 
                       *ngFor="let department of getDepartmentForm.controls; let i = index;">
@@ -107,7 +117,7 @@
                           <div class="col-2">
                               <div class="form-group">
                                   <label>Id</label>
-                                  <input type="text" [ngClass]="{'bg-warning': department.dirty }" class="form-control" formControlName="id" readonly/>
+                                  <input type="text" [ngClass]="{'bg-warning': department.dirty }" class="form-control" formControlName="id" [readonly]="true"/>
                               </div>
                           </div>
                           <div class="col-8">
@@ -125,8 +135,7 @@
                         </div>
                       </div>
                     </section> 
-                    <button type="button" class="btn btn-primary mb-2" (click)="addEmptyDepartment()">{{ 'Maintain.add' | translate }} {{ 'Maintain.department' | translate }}</button>
-                    <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>              
+            
                   </div>
                 </div>
               </form>  

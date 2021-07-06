@@ -40,7 +40,7 @@ namespace API.Controllers
             var addList = companyList.Where(x => x.Id == 0).ToList();
             updateList.ForEach(m =>
             {
-                m.CreateDate = Extensions.GetDateTimeNowInMillionSec();
+                // m.CreateDate = Extensions.GetDateTimeNowInMillionSec();
                 _cMSCompanyDAO.Update(m);
             });
             await _cMSCompanyDAO.SaveAll();

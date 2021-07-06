@@ -32,10 +32,10 @@ export const routes: Routes = [
   },
   {
     path: "ESignature",
-    //canActivate: [AuthGuardRole],
+    canActivate: [AuthGuardRole],
     component: SignaturePadComponent,
     data: {
-      roles: ['GUARD','GA'],
+      roles: ["GUARD", "GA"],
     },
   },
   {
@@ -57,7 +57,9 @@ export const routes: Routes = [
       {
         path: "Maintain",
         loadChildren: () =>
-          import("./views/maintain/maintain.module").then((m) => m.MaintainModule),
+          import("./views/maintain/maintain.module").then(
+            (m) => m.MaintainModule
+          ),
       },
       {
         path: "Report",
@@ -65,9 +67,15 @@ export const routes: Routes = [
           import("./views/report/report.module").then((m) => m.ReportModule),
       },
       {
+        canActivate: [AuthGuardRole],
         path: "Transaction",
         loadChildren: () =>
-          import("./views/add-record-page/transaction.module").then((m) => m.TransactionModule),
+          import("./views/add-record-page/transaction.module").then(
+            (m) => m.TransactionModule
+          ),
+        data: {
+          roles: ["GUARD", "GA"],
+        },
       },
     ],
   },
