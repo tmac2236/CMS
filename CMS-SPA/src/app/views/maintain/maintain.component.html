@@ -27,13 +27,13 @@
                           <div class="col-5">
                               <div class="form-group">
                                   <label>{{ 'Report.titleList.companyName' | translate }}</label>
-                                  <input type="text" class="form-control" formControlName="companyName"/>
+                                  <input type="text" class="form-control" formControlName="companyName" [readonly]="this.company.value.isRead"/>
                               </div>
                           </div>
                           <div class="col-2">
                             <div class="form-group">
-                                <label>{{ 'Report.titleList.companyDistance' | translate }}</label>
-                                <input type="text" class="form-control" formControlName="companyDistance"/>
+                                <label>{{ 'Report.titleList.companyDistance' | translate }} (Km)</label>
+                                <input type="text" class="form-control" formControlName="companyDistance" [readonly]="this.company.value.isRead"/>
                             </div>
                           </div>
                           <div class="col-3">
@@ -82,7 +82,7 @@
                           <div class="col-8">
                               <div class="form-group">
                                   <label>{{ 'Report.titleList.carSize' | translate }}</label>
-                                  <input type="text" class="form-control" formControlName="carSize"/>
+                                  <input type="text" class="form-control" formControlName="carSize"  [readonly]="this.car.value.isRead"/>
                               </div>
                           </div>
                           
@@ -123,7 +123,7 @@
                           <div class="col-8">
                               <div class="form-group">
                                   <label>{{ 'Report.titleList.departmentName' | translate }}</label>
-                                  <input type="text" class="form-control" formControlName="departmentName"/>
+                                  <input type="text" class="form-control" formControlName="departmentName" [readonly]="this.department.value.isRead"/>
                               </div>
                           </div>
                           

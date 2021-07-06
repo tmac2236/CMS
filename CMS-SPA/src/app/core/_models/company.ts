@@ -6,6 +6,6 @@ export class Company {
   createDate: Date;
 
   isWarn: boolean; //only use in front end
-
+  isRead: boolean;
   constructor() {}
 }

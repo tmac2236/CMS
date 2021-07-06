@@ -54,12 +54,7 @@ export class MaintainComponent implements OnInit {
     this.role = this.utility.getRole();
     console.log("Here is  : " + this.role);
     //debugger;
-    if(this.role =='ADM'){
-      //this.getAllCompany();
-      //this.getAllCar();
-      //this.getAllDepartment();
       this.getAllCarCompanyDepartment();
-    }
   }
   getAllCar() {
     this.utility.spinner.show();
@@ -153,7 +148,11 @@ export class MaintainComponent implements OnInit {
         let resCars = <Car[]>res[0];
         resCars.map((x) => {
           this.cars = this.getCarForm;
-          this.cars.push(this.createCar(x.id, x.carSize));
+          //if role is GUARD isRead = true;
+          if(this.role == 'GUARD' ){
+            x.isRead = true;
+          }          
+          this.cars.push(this.createCar(x.id, x.carSize,x.isRead));
         });
         ///////////Companys///////////
         this.companyFormGroup = this.fb.group({
@@ -169,9 +168,13 @@ export class MaintainComponent implements OnInit {
           }else{
             x.isWarn = false;
           }
+          //if role is GUARD isRead = true;
+          if(this.role == 'GUARD' ){
+            x.isRead = true;
+          }
           this.companys = this.getCompanyForm;
           this.companys.push(
-            this.createCompany(x.id, x.companyName, x.companyDistance,x.createDate,x.isWarn)
+            this.createCompany(x.id, x.companyName, x.companyDistance,x.createDate,x.isWarn,x.isRead)
           );
         });
         ///////////Department///////////
@@ -180,8 +183,12 @@ export class MaintainComponent implements OnInit {
         });
         let resDepartments = <Department[]>res[2];
         resDepartments.map((x) => {
+          //if role is GUARD isRead = true;
+          if(this.role == 'GUARD' ){
+            x.isRead = true;
+          }
           this.departments = this.getDepartmentForm;
-          this.departments.push(this.createDepartment(x.id, x.departmentName));
+          this.departments.push(this.createDepartment(x.id, x.departmentName,x.isRead));
         });
 
       },
@@ -204,14 +211,16 @@ export class MaintainComponent implements OnInit {
     companyName?: string,
     companyDistance?: string,
     createDate?: Date,
-    isWarn?: boolean
+    isWarn?: boolean,
+    isRead?: boolean
   ): FormGroup {
     return this.fb.group({
       id: id,
       companyName: companyName,
       companyDistance: companyDistance,
       createDate:createDate,
-      isWarn:isWarn
+      isWarn:isWarn,
+      isRead: isRead
     });
   }
   addEmptyCompany(): void {    
@@ -247,7 +256,7 @@ export class MaintainComponent implements OnInit {
           "Sweet Alert",
           "Save Success !",
           () => {
-            if(this.role =='adm'){
+            if(this.role =='ADM'){
               this.getAllCompany();
             }
           }); 
@@ -268,10 +277,11 @@ export class MaintainComponent implements OnInit {
   get getCarForm(): FormArray {
     return this.carFormGroup.get("cars") as FormArray;
   }
-  createCar(id?: number, carSize?: string): FormGroup {
+  createCar(id?: number, carSize?: string, isRead?: boolean): FormGroup {
     return this.fb.group({
       id: id,
       carSize: carSize,
+      isRead: isRead
     });
   }
   addEmptyCar(): void {
@@ -304,7 +314,7 @@ export class MaintainComponent implements OnInit {
           "Sweet Alert",
           "Save Success !",
           () => {
-            if(this.role =='adm'){
+            if(this.role =='ADM'){
               this.getAllCar();
             }
           }); 
@@ -326,10 +336,11 @@ export class MaintainComponent implements OnInit {
   get getDepartmentForm(): FormArray {
     return this.departmentFormGroup.get("departments") as FormArray;
   }
-  createDepartment(id?: number, departmentName?: string): FormGroup {
+  createDepartment(id?: number, departmentName?: string, isRead?: boolean): FormGroup {
     return this.fb.group({
       id: id,
       departmentName: departmentName,
+      isRead: isRead
     });
   }
   addEmptyDepartment(): void {
@@ -362,7 +373,7 @@ export class MaintainComponent implements OnInit {
           "Sweet Alert",
           "Save Success !",
           () => {
-            if(this.role =='adm'){
+            if(this.role =='ADM'){
               this.getAllDepartment();
             } 
           }); 
