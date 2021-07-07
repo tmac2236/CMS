@@ -87,7 +87,7 @@ export class F428EditComponent implements OnInit {
     //一定要選狀態才能儲存
     if(this.sF428SampleNoDetail.status == "0" ){
       this.utility.alertify.confirm(
-      "Sweet Alert",
+      "System Alert",
       "Please select Check Status !",
       () => { });   
        return ;
@@ -101,7 +101,7 @@ export class F428EditComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "Update Success !",
           () => { });  
       },

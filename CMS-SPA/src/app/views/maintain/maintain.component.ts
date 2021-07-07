@@ -253,7 +253,7 @@ export class MaintainComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "Save Success !",
           () => {
             if(this.role =='ADM'){
@@ -311,7 +311,7 @@ export class MaintainComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "Save Success !",
           () => {
             if(this.role =='ADM'){
@@ -370,7 +370,7 @@ export class MaintainComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "Save Success !",
           () => {
             if(this.role =='ADM'){

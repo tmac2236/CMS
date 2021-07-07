@@ -77,7 +77,7 @@ export class Utility {
     let powerStr = "on";
     if (!bo) powerStr = "off";
     this.alertify.confirm(
-      "Sweet Alert",
+      "System Alert",
       "You just turned " + powerStr + " the pagination mode.",
       () => {
         objS.isPaging = bo;

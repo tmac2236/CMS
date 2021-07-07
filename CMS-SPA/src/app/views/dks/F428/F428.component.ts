@@ -58,7 +58,7 @@ export class F428Component implements OnInit {
           this.utility.spinner.hide();
           if(res.result.length < 1){
             this.utility.alertify.confirm(
-              "Sweet Alert",
+              "System Alert",
               "No Data in these conditions of search, please try again.",
               () => {});
           }

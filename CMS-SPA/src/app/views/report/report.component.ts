@@ -40,6 +40,7 @@ export class ReportComponent implements OnInit {
     );
     this.getAllCompany();
     this.getAllDepartment();
+    this.search();
   }
 
   edit(model: CarManageRecordDto) {
@@ -86,7 +87,7 @@ export class ReportComponent implements OnInit {
         this.utility.spinner.hide();
         if (res.result.length < 1) {
           this.utility.alertify.confirm(
-            "Sweet Alert",
+            "System Alert",
             "No Data in these conditions of search, please try again.",
             () => {}
           );
@@ -155,7 +156,7 @@ export class ReportComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "Confirm Success !",
           () => {}
         );

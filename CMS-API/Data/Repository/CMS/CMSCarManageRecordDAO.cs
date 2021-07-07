@@ -71,6 +71,8 @@ namespace API.Data.Repository.CMS
                                               left join CMSDepartment AS DPM on DPM.ID = CMR.DepartmentId
                                               left join CMSCar AS C on C.Id = CMR.CarId ");
             strSQL += strWhere;
+            string strOrderBy =" Order By SignInDate DESC ";
+            strSQL += strOrderBy;
             var data = await _context.GetCarManageRecordDto.FromSqlRaw(strSQL).ToListAsync();
 
             return data;

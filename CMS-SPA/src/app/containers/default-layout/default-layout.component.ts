@@ -14,7 +14,7 @@ import { NavItem } from "../../_nav";
 })
 export class DefaultLayoutComponent implements OnInit {
   projectName = environment.projectName;
-  public sidebarMinimized = false;
+  public sidebarMinimized = false;  ////縮小鳥兒1/2 =true
   public navItems = [];
   user: string;
   jwtHelper = new JwtHelperService();
@@ -36,6 +36,7 @@ export class DefaultLayoutComponent implements OnInit {
     this.user = theToken['nameid'];
     this.version = theToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/version'];
     this.updateTime = theToken['birthdate'];
+    //this.toggleMinimize(true);  //commet ==>縮小鳥兒2/2
   }
   toggleMinimize(e) {
     this.sidebarMinimized = e;

@@ -57,7 +57,7 @@ export class AddRecordPageComponent implements OnInit {
   signature() {
     if(!this.checkFormValidate("signOut")) {
       this.utility.alertify.confirm(
-        "Sweet Alert",
+        "System Alert",
         "Please select Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
@@ -147,7 +147,7 @@ export class AddRecordPageComponent implements OnInit {
   save(){
     if(!this.checkFormValidate("save")) {
       this.utility.alertify.confirm(
-        "Sweet Alert",
+        "System Alert",
         "Please select Company、Department、Car !",
         () => { });  
         return;
@@ -157,7 +157,7 @@ export class AddRecordPageComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "Add Success !",
           () => { 
             this.model = new CarManageRecord();
@@ -172,7 +172,7 @@ export class AddRecordPageComponent implements OnInit {
   edit(){
     if(!this.checkFormValidate("edit")) {
       this.utility.alertify.confirm(
-        "Sweet Alert",
+        "System Alert",
         "Please select Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
@@ -182,7 +182,7 @@ export class AddRecordPageComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "Edit Success !",
           () => { 
             this.model = res;
@@ -198,7 +198,7 @@ export class AddRecordPageComponent implements OnInit {
   signOut(){
     if(!this.checkFormValidate("signOut")) {
       this.utility.alertify.confirm(
-        "Sweet Alert",
+        "System Alert",
         "Please select Company、Department、Car、Goods Name、Good Count、Guard Name !",
         () => {});  
         return;
@@ -208,7 +208,7 @@ export class AddRecordPageComponent implements OnInit {
       (res) => {
         this.utility.spinner.hide();
         this.utility.alertify.confirm(
-          "Sweet Alert",
+          "System Alert",
           "SignOut Success !",
           () => { 
             this.model = res; });  

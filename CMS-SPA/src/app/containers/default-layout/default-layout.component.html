@@ -44,10 +44,12 @@
 </ul>
 </app-header>
 <div class="app-body">
+  <!-- if you want big bird ==> [display]="false"-->
+  <!--if you want swing of bird [display]=''lg, if not [display]=false-->
   <app-sidebar
     #appSidebar
     [fixed]="true"
-    [display]="false"
+    [display]="'lg'"
     [minimized]="sidebarMinimized"
     (minimizedChange)="toggleMinimize($event)"
   >
