@@ -6,7 +6,7 @@ import { CarManageRecord } from "../../core/_models/car-manage-record";
 import { CarManageRecordDto } from "../../core/_models/car-manage-record-dto";
 import { Company } from "../../core/_models/company";
 import { Department } from "../../core/_models/department";
-import { PaginatedResult } from "../../core/_models/pagination";
+import { PaginatedResult, Pagination } from "../../core/_models/pagination";
 import { SCarManageRecordDto } from "../../core/_models/s-car-manage-record-dto";
 import { CmsService } from "../../core/_services/cms.service";
 
@@ -16,28 +16,48 @@ import { CmsService } from "../../core/_services/cms.service";
   styleUrls: ["./report.component.scss"],
 })
 export class ReportComponent implements OnInit {
-  constructor(
-    public utility: Utility,
-    private activeRouter: ActivatedRoute,
-    private route: Router,
-    private cmsService: CmsService
-  ) {}
 
+  actionCode:string;
   result: CarManageRecordDto[] = [];
   scarManageRecordDto: SCarManageRecordDto = new SCarManageRecordDto();
   deadlineNow = new Date(new Date().getTime() - 86400000); // now minus one day
   companyList: Company[] = [];
   departmentList: Department[] = [];
 
+  constructor(
+    public utility: Utility,
+    private activeRouter: ActivatedRoute,
+    private route: Router,
+    private cmsService: CmsService
+  ) {
+    this.activeRouter.queryParams.subscribe((params) => {
+      this.actionCode = params.actionCode;
+      var urlParamEnum:UrlParamEnum = UrlParamEnum[this.actionCode];
+
+      switch(urlParamEnum){
+        /*if want keep condition after press previous page
+        case UrlParamEnum.AddRecordSignature :{
+          this.scarManageRecordDto = JSON.parse(params.sCondition);
+  
+          break;
+        }
+        */
+        default :{
+          this.scarManageRecordDto.signInDateS = this.utility.datepiper.transform(
+            new Date(),
+            "yyyy-MM-dd"
+          );
+          this.scarManageRecordDto.signInDateE = this.utility.datepiper.transform(
+            new Date(),
+            "yyyy-MM-dd"
+          );
+          break;
+        }
+      }
+    });
+  }
   ngOnInit() {
-    this.scarManageRecordDto.signInDateS = this.utility.datepiper.transform(
-      new Date(),
-      "yyyy-MM-dd"
-    );
-    this.scarManageRecordDto.signInDateE = this.utility.datepiper.transform(
-      new Date(),
-      "yyyy-MM-dd"
-    );
+
     this.getAllCompany();
     this.getAllDepartment();
     this.search();
@@ -47,6 +67,7 @@ export class ReportComponent implements OnInit {
     var navigateTo = "/Transaction/AddRecordPage";
     var navigationExtras = {
       queryParams: {
+        sCondition: JSON.stringify(this.scarManageRecordDto),
         signInDate: model.signInDate,
         licenseNumber: model.licenseNumber,
         actionCode: UrlParamEnum.Report,
@@ -83,7 +104,7 @@ export class ReportComponent implements OnInit {
 
         });
         */
-        this.scarManageRecordDto.setPagination(res.pagination);
+        this.setPagination(this.scarManageRecordDto,res.pagination);
         this.utility.spinner.hide();
         if (res.result.length < 1) {
           this.utility.alertify.confirm(
@@ -173,5 +194,12 @@ export class ReportComponent implements OnInit {
   }
   clearCondition() {
     this.scarManageRecordDto = new SCarManageRecordDto();
+  }
+  //due to JSON.parse(params.sCondition) so created this
+  public setPagination(sCondition: Pagination,pagination: Pagination) {
+    sCondition.currentPage = pagination.currentPage;
+    sCondition.itemsPerPage = pagination.itemsPerPage;
+    sCondition.totalItems = pagination.totalItems;
+    sCondition.totalPages = pagination.totalPages;
   }
 }

@@ -6,6 +6,7 @@ import { Car } from "../../core/_models/car";
 import { CarManageRecord } from "../../core/_models/car-manage-record";
 import { Company } from "../../core/_models/company";
 import { Department } from "../../core/_models/department";
+import { Pagination } from "../../core/_models/pagination";
 import { CmsService } from "../../core/_services/cms.service";
 
 @Component({
@@ -16,11 +17,12 @@ import { CmsService } from "../../core/_services/cms.service";
 export class AddRecordPageComponent implements OnInit {
 
   model: CarManageRecord = new CarManageRecord();
-  actionCode:string;
   carList: Car[] = [];
   companyList: Company[] = [];
   departmentList: Department[] =[];
   isValidinDB:boolean = false;
+  actionCode:string;
+  sCondition: Pagination;//search condition from privious page
 
   constructor(
     public utility: Utility,private activeRouter: ActivatedRoute,private route: Router,private cmsService:CmsService) {
@@ -39,6 +41,7 @@ export class AddRecordPageComponent implements OnInit {
         case UrlParamEnum.Report :{
           this.model.signInDate = params.signInDate;
           this.model.licenseNumber = params.licenseNumber;
+          this.sCondition = params.sCondition;
           this.getTheRecord();
           break;
         }
@@ -170,7 +173,7 @@ export class AddRecordPageComponent implements OnInit {
     );
   }
   edit(){
-    if(!this.checkFormValidate("edit")) {
+    if((!this.checkFormValidate("edit"))&& (this.model.isConfirm != null)) {
       this.utility.alertify.confirm(
         "System Alert",
         "Please select Goods Name、Good Count、Guard Name !",
@@ -292,6 +295,8 @@ export class AddRecordPageComponent implements OnInit {
     var navigateTo = "/Report";
     var navigationExtras = {
       queryParams: {
+        sCondition:this.sCondition,
+        actionCode: UrlParamEnum.AddRecordSignature
       },
       skipLocationChange: true,
     };
