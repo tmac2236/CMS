@@ -62,6 +62,7 @@ import { TestComponent } from "./views/test/test.component";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { WebcamModule } from "ngx-webcam";
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'; //datePicker
 
 //載入 "/assets/i18n/[lang].json" 語系檔
 export function createTranslateLoader(http: HttpClient) {
@@ -100,6 +101,7 @@ export function createTranslateLoader(http: HttpClient) {
     PaginationModule.forRoot(), //分頁用
     ModalModule.forRoot(), //Modal用
     WebcamModule,
+    BsDatepickerModule.forRoot(), //datePicker
   ],
   declarations: [
     AppComponent,

@@ -14,6 +14,7 @@ import { ReportComponent } from './report.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     NgSelectModule,   // ng-select
     PaginationModule, //use for sheet
     TooltipModule,
+    BsDatepickerModule,
   ],
   declarations: [ReportComponent],
 })

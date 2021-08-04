@@ -46,7 +46,9 @@
                 "guardName":"Guard Name",
                 "carSize":"Car Size",
                 "companyDistance":"Distance",
-                "memo":"Memo"
+                "memo":"Memo",
+                "isConfirm":"Is Confirm",
+                "isSignOut":"Is SignOut"
         }
     },
     "Maintain":{

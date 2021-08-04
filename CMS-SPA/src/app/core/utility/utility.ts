@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 import { FormArray } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { BsLocaleService } from "ngx-bootstrap/datepicker";
 import { NgxSpinnerService } from "ngx-spinner";
 import { environment } from "../../../environments/environment";
 import { Pagination } from "../_models/pagination";
@@ -21,12 +22,14 @@ export class Utility {
   //getUserName
   jwtHelper = new JwtHelperService();
 
+
   constructor(
     public http: HttpClient,
     public alertify: AlertifyService,
     public spinner: NgxSpinnerService,
     public datepiper: DatePipe,
-    public languageService: LanguageService
+    public languageService: LanguageService,
+    private localeService: BsLocaleService
   ) {}
 
   logout() {
@@ -71,6 +74,7 @@ export class Utility {
   //設定語言
   useLanguage(language: string) {
     this.languageService.setLang(language);
+    this.localeService.use(language);
   }
   //設定是否分頁
   setPagination(bo: boolean, objS: Pagination) {

@@ -9,6 +9,13 @@ import { Department } from "../../core/_models/department";
 import { PaginatedResult, Pagination } from "../../core/_models/pagination";
 import { SCarManageRecordDto } from "../../core/_models/s-car-manage-record-dto";
 import { CmsService } from "../../core/_services/cms.service";
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { zhCnLocale } from "ngx-bootstrap/locale"; //中文
+import { viLocale } from "ngx-bootstrap/locale"; //越文
+import { enGbLocale } from "ngx-bootstrap/locale"; //英文
+defineLocale("zh-cn", zhCnLocale); //定義local中文
+defineLocale("vn", viLocale);//定義local越文
+defineLocale("en", enGbLocale);//定義local英文
 
 @Component({
   selector: "app-report",

@@ -92,7 +92,7 @@
                   [(ngModel)]="scarManageRecordDto.contactPerson"/>                
               </div>
               <div class="form-group col-md-1">
-                <label>IsSignOut</label>
+                <label>{{ "Report.titleList.isSignOut" | translate }}</label>
                 <select
                 class="form-control"
                 name="signOutDate"
@@ -104,7 +104,8 @@
                 </select>
               </div>              
               <div class="form-group col-md-3 mt-4">
-                  <!-- temp blank-->                
+                  <!-- temp blank-->
+                  <!--<input placeholder="Datepicker" type="text" class="form-control" bsDatepicker #dp="bsDatepicker">  -->   
               </div>
             </div>
             <!--Row3-->
@@ -209,7 +210,7 @@
                             {{ "Report.titleList.companyDistance" | translate }}
                           </th>
                           <th style="width: 3%; background-color: #76daff">
-                            IsConfirm
+                            {{ "Report.titleList.isConfirm" | translate }}
                           </th>
                           <th style="width: 5%; background-color: #76daff">
                             {{ "Report.titleList.memo" | translate }}
