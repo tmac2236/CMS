@@ -121,8 +121,9 @@ export class MaintainComponent implements OnInit {
           }
 
           this.companys = this.getCompanyForm;
+          let createDateStr = x.createDate.toString().replace("T"," ");
           this.companys.push(
-            this.createCompany(x.id, x.companyName, x.companyDistance,x.createDate,x.isWarn)
+            this.createCompany(x.id, x.companyName, x.companyDistance,createDateStr,x.isWarn)
           );
         });
       },
@@ -173,8 +174,9 @@ export class MaintainComponent implements OnInit {
             x.isRead = true;
           }
           this.companys = this.getCompanyForm;
+          let createDateStr = x.createDate.toString().replace("T"," ");
           this.companys.push(
-            this.createCompany(x.id, x.companyName, x.companyDistance,x.createDate,x.isWarn,x.isRead)
+            this.createCompany(x.id, x.companyName, x.companyDistance,createDateStr,x.isWarn,x.isRead)
           );
         });
         ///////////Department///////////
@@ -210,7 +212,7 @@ export class MaintainComponent implements OnInit {
     id?: number,
     companyName?: string,
     companyDistance?: string,
-    createDate?: Date,
+    createDate?: string,
     isWarn?: boolean,
     isRead?: boolean
   ): FormGroup {
