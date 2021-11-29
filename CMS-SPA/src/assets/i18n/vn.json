@@ -32,7 +32,7 @@
 
             "signInDate":"Ngày / Giờ vào xưởng",
             "tempNumber":"Mã số thẻ khách",
-            "carTempNumber" :"Mã số thẻ xe",
+            "carTempNumber" :"Mã số thẻ đậu xe",
             "signInReason":"Lý do",
             "goodsName":"Tên hàng",
             "goodsCount":"Số lượng",
