@@ -257,8 +257,8 @@ export class AddRecordPageComponent implements OnInit {
           //this.model.tempNumber = res.tempNumber;
           //this.model.carTempNumber = res.carTempNumber;
           this.model.signInReason = res.signInReason;
-          this.model.goodsName = res.goodsName;
-          this.model.goodsCount = res.goodsCount;
+          //this.model.goodsName = res.goodsName;   12/4 Emma cancel
+          //this.model.goodsCount = res.goodsCount; 12/4 Emma cancel
           this.model.departmentId = res.departmentId;
           this.model.contactPerson = res.contactPerson;
           this.model.sealNumber = res.sealNumber;
