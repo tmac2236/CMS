@@ -5,7 +5,7 @@
         <div class="card-body">
           <tabset>
             <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.company' | translate }}" id="tab1">
-              <form [formGroup]="companyFormGroup" class="container mt-3 " (ngSubmit)="submitCompanyList()">
+              <form [formGroup]="companyFormGroup" class="container mt-3 " (ngSubmit)="submitCompanyList($event)">
                 <div class="row justify-content-left">
                   <div class="col-12">
                     <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCompany()">{{ 'Maintain.add' | translate }} {{ 'Maintain.company' | translate }}</button>
@@ -60,7 +60,7 @@
             </tab>
 
             <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.car' | translate }}">
-              <form [formGroup]="carFormGroup" class="container mt-3" (ngSubmit)="submitCarList()">
+              <form [formGroup]="carFormGroup" class="container mt-3" (ngSubmit)="submitCarList($event)">
                 <div class="col-12">
                   <button type="button" class="btn btn-primary mb-2" (click)="addEmptyCar()">{{ 'Maintain.add' | translate }} {{ 'Maintain.car' | translate }}</button>
                   <input type="submit" class="btn btn-success mb-2" value="{{ 'Maintain.submit' | translate }}"/>  
@@ -101,7 +101,7 @@
             </tab>
 
             <tab heading="{{ 'Maintain.title' | translate }} {{ 'Maintain.department' | translate }}">
-              <form [formGroup]="departmentFormGroup" class="container mt-3" (ngSubmit)="submitDepartmentList()">
+              <form [formGroup]="departmentFormGroup" class="container mt-3" (ngSubmit)="submitDepartmentList($event)">
                 <div class="row justify-content-left">
                   <div class="col-12">
                     <button type="button" class="btn btn-primary mb-2" (click)="addEmptyDepartment()">{{ 'Maintain.add' | translate }} {{ 'Maintain.department' | translate }}</button>

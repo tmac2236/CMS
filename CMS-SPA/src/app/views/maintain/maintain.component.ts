@@ -234,7 +234,7 @@ export class MaintainComponent implements OnInit {
     console.log(this.companys.at(i));
     this.companys.removeAt(i);
   }
-  submitCompanyList() {
+  submitCompanyList(event: any) {
     let companyList = [];
     let companysForm = this.utility.getChangedProperties(this.companys);
     companysForm.map((companyForm) => {
@@ -251,6 +251,8 @@ export class MaintainComponent implements OnInit {
       company.isWarn = companyForm.value.isWarn;
       companyList.push(company);
     });
+    if(companyList.length < 1) return;
+    event.target[1].disabled = true;
     this.cmsService.addOrUpdateCompanyList(companyList).subscribe(
       (res) => {
         this.utility.spinner.hide();
@@ -295,7 +297,7 @@ export class MaintainComponent implements OnInit {
     console.log(this.cars.at(i));
     this.cars.removeAt(i);
   }
-  submitCarList(){
+  submitCarList(event: any){
     let carList = [];
     let carsForm = this.utility.getChangedProperties(this.cars);
     carsForm.map((carForm) => {
@@ -309,6 +311,8 @@ export class MaintainComponent implements OnInit {
       car.carSize = carForm.value.carSize;
       carList.push(car);
     });
+    if(carList.length < 1) return;
+    event.target[1].disabled = true;
     this.cmsService.addOrUpdateCarList(carList).subscribe(
       (res) => {
         this.utility.spinner.hide();
@@ -354,7 +358,7 @@ export class MaintainComponent implements OnInit {
     console.log(this.departments.at(i));
     this.departments.removeAt(i);
   }
-  submitDepartmentList() {
+  submitDepartmentList(event: any) {
     let departmentList = [];
     let departmentsForm = this.utility.getChangedProperties(this.departments);
     departmentsForm.map((departmentForm) => {
@@ -368,6 +372,8 @@ export class MaintainComponent implements OnInit {
       department.departmentName = departmentForm.value.departmentName;
       departmentList.push(department);
     });
+    if(departmentList.length < 1) return;
+    event.target[1].disabled = true;
     this.cmsService.addOrUpdateDepartmentList(departmentList).subscribe(
       (res) => {
         this.utility.spinner.hide();
