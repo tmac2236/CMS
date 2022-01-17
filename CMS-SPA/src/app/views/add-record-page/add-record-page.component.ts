@@ -147,7 +147,7 @@ export class AddRecordPageComponent implements OnInit {
       }
     );    
   }
-  save(){
+  save(event: any){
     if(!this.checkFormValidate("save")) {
       this.utility.alertify.confirm(
         "System Alert",
@@ -155,6 +155,7 @@ export class AddRecordPageComponent implements OnInit {
         () => { });  
         return;
     } 
+    event.target.disabled = true;
     this.utility.spinner.show();
     this.cmsService.addRecord(this.model).subscribe(
       (res) => {
